@@ -47,3 +47,8 @@ change_password:
   res:
     status: 200
     msg: '修改密码成功'
+search_user_msg:
+  url: '/idcvideo-meeting/user/selectUserInfo.do'
+  res:
+    status: 200
+    msg: '请求成功'

@@ -1,3 +1,5 @@
+from time import sleep
+
 import requests
 import yaml
 
@@ -29,6 +31,7 @@ def get_token():
     res = r.json()['data']['userToken']
     demo = dict()
     demo['userToken'] = res
+    sleep(3)
     return demo
 
 

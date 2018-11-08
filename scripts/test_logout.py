@@ -1,5 +1,4 @@
 from time import sleep
-
 import allure
 import requests
 import pytest

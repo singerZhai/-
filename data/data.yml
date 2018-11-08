@@ -52,3 +52,20 @@ search_user_msg:
   res:
     status: 200
     msg: '请求成功'
+compile_user_msg:
+  url: '/idcvideo-meeting/user/editUser.do'
+  params:
+    nickname: '翟'
+    sex: 0
+    file:
+  res:
+    status: 200
+    msg: '编辑成功'
+sign_in_facility_user:
+  url: '/idcvideo-meeting/device/fastLogin.do'
+  params:
+    deviceUdid: '6006'
+    source:
+  res:
+    status: 200
+    msg: '请求成功'

@@ -18,8 +18,8 @@ fast_login:
 logout:
   url: '/idcvideo-meeting/user/logout.do'
   res:
-    status: 0
-    msg: '退出登录'
+    status: 200
+    msg: '退出登录成功'
 sign_in:
   url: '/idcvideo-meeting/user/register.do'
   params:

@@ -5,19 +5,19 @@ main_url = 'http://www.freevoip.com.cn'
 
 
 def get_url(path, urls, url_name):
-    with open('../data/' + path + '.yml', encoding='utf-8') as f:
+    with open('./data/' + path + '.yml', encoding='utf-8') as f:
         result = yaml.load(f)
         return main_url + result[urls][url_name]
 
 
 def get_params(path, urls, params):
-    with open('../data/' + path + '.yml', encoding='utf-8') as f:
+    with open('./data/' + path + '.yml', encoding='utf-8') as f:
         result = yaml.load(f)
         return result[urls][params]
 
 
 def get_res(path, urls, res):
-    with open('../data/' + path + '.yml', encoding='utf-8') as f:
+    with open('./data/' + path + '.yml', encoding='utf-8') as f:
         result = yaml.load(f)
         return result[urls][res]
 
@@ -30,6 +30,11 @@ def get_token():
     demo = dict()
     demo['userToken'] = res
     return demo
+
+
+def get_token_again(status):
+    if status != 200:
+        res = get_token()
 
 
 if __name__ == '__main__':

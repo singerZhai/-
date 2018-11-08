@@ -26,11 +26,10 @@ def get_token():
     login_url = get_url('data', 'login', 'url')
     login_params = get_params('data', 'login', 'params')
     r = requests.post(login_url, login_params)
-    res = r.json()['data']
+    res = r.json()['data']['userToken']
     demo = dict()
-    for i, j in res:
-        if i == 'userToken':
-            demo.
+    demo['userToken'] = res
+    return demo
 
 
 if __name__ == '__main__':

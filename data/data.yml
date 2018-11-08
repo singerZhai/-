@@ -1,0 +1,49 @@
+login:
+  url: '/idcvideo-meeting/user/login.do'
+  params:
+    username: '15611066631'
+    password: '123456'
+  res:
+    status: 200
+    msg: '请求成功'
+fast_login:
+  url: '/idcvideo-meeting/user/fastLogin.do'
+  params:
+    username: '13987654321'
+    smsCode: '万能验证码'
+    source: 3
+  res:
+    status: 200
+    msg: '请求成功'
+logout:
+  url: '/idcvideo-meeting/user/logout.do'
+  res:
+    status: 0
+    msg: '退出登录'
+sign_in:
+  url: '/idcvideo-meeting/user/register.do'
+  params:
+    username: '15611066631'
+    password: '123456'
+    smsCode: '万能验证码'
+    source: 3
+  res:
+    status: 200
+    msg: '请求成功'
+forget_password:
+  url: '/idcvideo-meeting/user/forgetPassword.do'
+  params:
+    username: '15611066631'
+    password: '123456'
+    smsCode: '万能验证码'
+  res:
+    status: 200
+    msg: '密码重置成功'
+change_password:
+  url: '/idcvideo-meeting/user/modifyPassword.do'
+  params:
+    oldPassword: '123456'
+    newPassword: '654321'
+  res:
+    status: 200
+    msg: '修改密码成功'

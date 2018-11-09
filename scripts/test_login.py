@@ -27,6 +27,5 @@ class TestLogin:
     def test_fast_login(self):
         r = requests.post(self.fast_login_url, self.fast_login_params)
         res = r.json()
-        print(res)
         assert res['status'] == self.fast_login_res['status']
         assert res['msg'] == self.fast_login_res['msg']

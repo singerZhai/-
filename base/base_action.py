@@ -53,7 +53,7 @@ def change_password_get_token(username, password):
     return demo
 
 
-def change_back_password():
+def again_change_password():
     url = get_url('data', 'change_password', 'url')
     userToken = change_password_get_token('15611066631', '654321')
     change_params = change_back_password_params()
@@ -75,8 +75,9 @@ def change_back_password():
 
 
 if __name__ == '__main__':
-    print(get_url('data', 'login', 'url'))
-    print(get_params('data', 'login', 'params'))
-    print(get_res('data', 'login', 'res'))
-    print(get_token())
-    print(change_back_password_params())
+    # print(get_url('data', 'login', 'url'))
+    # print(get_params('data', 'login', 'params'))
+    # print(get_res('data', 'login', 'res'))
+    # print(get_token())
+    # print(change_back_password_params())
+    again_change_password()

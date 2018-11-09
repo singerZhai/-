@@ -2,7 +2,7 @@ from time import sleep
 import requests
 import pytest
 import allure
-from base.base_action import get_url, get_params, get_token, get_res, change_back_password_params, change_back_password
+from base.base_action import get_url, get_params, get_token, get_res, change_back_password_params, again_change_password
 
 
 class TestChangePassword:
@@ -14,7 +14,6 @@ class TestChangePassword:
 
     # 修改密码接口
     @allure.step('修改密码接口')
-    @pytest.mark.last
     @pytest.mark.skipif(condition=False, reason='第二次修改密码token异常')
     def test_change_password(self):
         userToken = get_token()
@@ -27,6 +26,6 @@ class TestChangePassword:
         # sleep作用：解决频繁调用接口报错问题
         sleep(3)
         # 将更改后密码再次更改回123456，使case能够正常执行
-        change_back_password()
+        again_change_password()
         # sleep作用：解决频繁调用接口报错问题
         sleep(3)

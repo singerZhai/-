@@ -47,6 +47,10 @@ change_password:
   res:
     status: 200
     msg: '修改密码成功'
+  change_back_password:
+    params:
+      oldPassword: '654321'
+      newPassword: '123456'
 search_user_msg:
   url: '/idcvideo-meeting/user/selectUserInfo.do'
   res:

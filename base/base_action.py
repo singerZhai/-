@@ -23,20 +23,54 @@ def get_res(path, urls, res):
         return result[urls][res]
 
 
+def change_back_password_params():
+    with open('./data/data.yml', encoding='utf-8') as f:
+        result = yaml.load(f)
+        return result['change_password']['change_back_password']['params']
+
+
 def get_token():
+    sleep(2)
     login_url = get_url('data', 'login', 'url')
     login_params = get_params('data', 'login', 'params')
     r = requests.post(login_url, login_params)
     res = r.json()['data']['userToken']
     demo = dict()
     demo['userToken'] = res
-    sleep(3)
+    sleep(2)
     return demo
 
 
-def get_token_again(status):
-    if status != 200:
-        res = get_token()
+def change_password_get_token(username, password):
+    sleep(2)
+    login_url = get_url('data', 'login', 'url')
+    login_params = {'username': username, 'password': password}
+    r = requests.post(login_url, login_params)
+    res = r.json()['data']['userToken']
+    demo = dict()
+    demo['userToken'] = res
+    sleep(2)
+    return demo
+
+
+def change_back_password():
+    url = get_url('data', 'change_password', 'url')
+    userToken = change_password_get_token('15611066631', '654321')
+    change_params = change_back_password_params()
+    params = dict(change_params, **userToken)
+    try:
+        r = requests.post(url, params)
+        res = r.json()
+        if res['status'] == 200:
+            return
+    except Exception:
+        while True:
+            new_token = get_token()
+            new_params = dict(change_params, **new_token)
+            new_r = requests.post(url, new_params)
+            new_res = new_r.json()
+            if new_res['status'] == 200:
+                return
 
 
 if __name__ == '__main__':
@@ -44,3 +78,5 @@ if __name__ == '__main__':
     print(get_params('data', 'login', 'params'))
     print(get_res('data', 'login', 'res'))
     print(get_token())
+    print(change_back_password_params())
+    print(change_back_password())

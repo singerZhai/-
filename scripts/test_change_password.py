@@ -18,11 +18,15 @@ class TestChangePassword:
     @pytest.mark.skipif(condition=False, reason='第二次修改密码token异常')
     def test_change_password(self):
         userToken = get_token()
+        # 拼接两个字典
         new_params = dict(self.change_params, **userToken)
         r = requests.post(self.change_url, new_params)
         res = r.json()
         assert res['status'] == self.change_res['status']
         assert res['msg'] == self.change_res['msg']
+        # sleep作用：解决频繁调用接口报错问题
         sleep(3)
+        # 将更改后密码再次更改回123456，使case能够正常执行
         change_back_password()
+        # sleep作用：解决频繁调用接口报错问题
         sleep(3)

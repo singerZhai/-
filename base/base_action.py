@@ -58,6 +58,7 @@ def change_back_password():
     userToken = change_password_get_token('15611066631', '654321')
     change_params = change_back_password_params()
     params = dict(change_params, **userToken)
+    # 防止频繁调用登陆接口获取userToken衍生出的“token无效”问题
     try:
         r = requests.post(url, params)
         res = r.json()
@@ -79,4 +80,3 @@ if __name__ == '__main__':
     print(get_res('data', 'login', 'res'))
     print(get_token())
     print(change_back_password_params())
-    print(change_back_password())

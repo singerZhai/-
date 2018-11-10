@@ -3,28 +3,29 @@ import requests
 import yaml
 
 main_url = 'http://www.freevoip.com.cn'
+# main_url = '192.168.1.238:8080'
 
 
 def get_url(path, urls, url_name):
-    with open('./data/' + path + '.yml', encoding='utf-8') as f:
+    with open('../data/' + path + '.yml', encoding='utf-8') as f:
         result = yaml.load(f)
         return main_url + result[urls][url_name]
 
 
 def get_params(path, urls, params):
-    with open('./data/' + path + '.yml', encoding='utf-8') as f:
+    with open('../data/' + path + '.yml', encoding='utf-8') as f:
         result = yaml.load(f)
         return result[urls][params]
 
 
 def get_res(path, urls, res):
-    with open('./data/' + path + '.yml', encoding='utf-8') as f:
+    with open('../data/' + path + '.yml', encoding='utf-8') as f:
         result = yaml.load(f)
         return result[urls][res]
 
 
 def change_back_password_params():
-    with open('./data/data.yml', encoding='utf-8') as f:
+    with open('../data/data.yml', encoding='utf-8') as f:
         result = yaml.load(f)
         return result['change_password']['change_back_password']['params']
 

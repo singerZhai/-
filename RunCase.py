@@ -8,14 +8,15 @@ if __name__ == '__main__':
     discover = unittest.defaultTestLoader.discover(case_path, pattern='test_login.py')
 
     # 报告生成路径
+    # Report/路径必须提前创建，否则报错
     report_path = './Report/'
 
     # 获取当前时间
-    now_time = time.strftime('%Y-%m-%d %H:%M:%S')
+    now_time = time.strftime('%Y-%m-%d_%H_%M_%S')
 
     # 设置报告名称
     report_name = report_path + now_time + '-TestReport.html'
-    print(report_name)
+    # print(report_name)
 
     # 打开并写入报告
     with open(report_name, 'wb') as f:

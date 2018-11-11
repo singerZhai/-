@@ -1,7 +1,7 @@
 import allure
 import requests
 
-from base.base_action import get_url, get_params, get_token, get_res
+from base.base_action import get_url, get_params, get_token, get_res, assert_equal
 
 
 class TestCompileUserMsg:
@@ -17,6 +17,7 @@ class TestCompileUserMsg:
     def test_compile_user_msg(self):
         r = requests.post(self.url, self.new_params)
         res = r.json()
+        assert r.status_code == 200
         assert res['status'] == res['status']
         assert res['msg'] == res['msg']
 

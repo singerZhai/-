@@ -1,7 +1,7 @@
 import allure
 import pytest
 import requests
-from base.base_action import get_url, get_res, get_params
+from base.base_action import get_url, get_res, get_params, assert_equal
 
 
 class TestLogin:
@@ -18,6 +18,7 @@ class TestLogin:
     def test_login(self):
         r = requests.post(self.login_url, self.login_params)
         res = r.json()
+        assert r.status_code == 200
         assert res['status'] == self.login_res['status']
         assert res['msg'] == self.login_res['msg']
 
@@ -27,5 +28,6 @@ class TestLogin:
     def test_fast_login(self):
         r = requests.post(self.fast_login_url, self.fast_login_params)
         res = r.json()
+        assert r.status_code == 200
         assert res['status'] == self.fast_login_res['status']
         assert res['msg'] == self.fast_login_res['msg']

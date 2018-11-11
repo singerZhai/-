@@ -2,7 +2,8 @@ from time import sleep
 import requests
 import pytest
 import allure
-from base.base_action import get_url, get_params, get_token, get_res, change_back_password_params, again_change_password
+from base.base_action import get_url, get_params, get_token, get_res, change_back_password_params, \
+    again_change_password, assert_equal
 
 
 class TestChangePassword:
@@ -21,6 +22,7 @@ class TestChangePassword:
         new_params = dict(self.change_params, **userToken)
         r = requests.post(self.change_url, new_params)
         res = r.json()
+        assert r.status_code == 200
         assert res['status'] == self.change_res['status']
         assert res['msg'] == self.change_res['msg']
         # sleep作用：解决频繁调用接口报错问题

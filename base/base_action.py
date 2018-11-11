@@ -7,25 +7,25 @@ main_url = 'http://www.freevoip.com.cn'
 
 
 def get_url(path, urls, url_name):
-    with open('../data/' + path + '.yml', encoding='utf-8') as f:
+    with open('./data/' + path + '.yml', encoding='utf-8') as f:
         result = yaml.load(f)
         return main_url + result[urls][url_name]
 
 
 def get_params(path, urls, params):
-    with open('../data/' + path + '.yml', encoding='utf-8') as f:
+    with open('./data/' + path + '.yml', encoding='utf-8') as f:
         result = yaml.load(f)
         return result[urls][params]
 
 
 def get_res(path, urls, res):
-    with open('../data/' + path + '.yml', encoding='utf-8') as f:
+    with open('./data/' + path + '.yml', encoding='utf-8') as f:
         result = yaml.load(f)
         return result[urls][res]
 
 
 def change_back_password_params():
-    with open('../data/data.yml', encoding='utf-8') as f:
+    with open('./data/data.yml', encoding='utf-8') as f:
         result = yaml.load(f)
         return result['change_password']['change_back_password']['params']
 
@@ -75,10 +75,28 @@ def again_change_password():
                 return
 
 
+def sign_in_device_user():
+    url = get_url('data', 'sign_in_device_user', 'url')
+    params = get_params('data', 'sign_in_device_user', 'params')
+    r = requests.post(url, params)
+    res = r.json()
+    return res['data']['deviceUser']['userid']
+
+
+def get_user_id():
+    userid = sign_in_device_user()
+    demo = dict()
+    demo['userid'] = userid
+    return demo
+
+
 if __name__ == '__main__':
-    # print(get_url('data', 'login', 'url'))
-    # print(get_params('data', 'login', 'params'))
-    # print(get_res('data', 'login', 'res'))
-    # print(get_token())
-    # print(change_back_password_params())
-    again_change_password()
+    print(get_url('data', 'login', 'url'))
+    print(get_params('data', 'login', 'params'))
+    print(get_res('data', 'login', 'res'))
+    print(get_token())
+    print(change_back_password_params())
+    # 将密码更改回‘123456’
+    # again_change_password()
+    print(sign_in_device_user())
+    print(get_user_id())

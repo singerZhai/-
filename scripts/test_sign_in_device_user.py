@@ -15,5 +15,6 @@ class TestSignInDeviceUser:
     def test_sign_in_device_user(self):
         r = requests.post(self.url, self.params)
         res = r.json()
+        assert r.status_code == 200
         assert res['status'] == self.res['status']
         assert res['msg'] == self.res['msg']

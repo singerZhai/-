@@ -15,5 +15,6 @@ class TestLogout:
         user_token = get_token()
         r = requests.post(self.logout_url, user_token)
         res = r.json()
+        assert r.status_code == 200
         assert res['status'] == self.logout_res['status']
         assert res['msg'] == self.logout_res['msg']

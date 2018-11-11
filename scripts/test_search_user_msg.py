@@ -15,5 +15,6 @@ class TestSearchUserMsg:
         user_token = get_token()
         r = requests.post(self.search_user_msg_url, user_token)
         res = r.json()
+        assert r.status_code == 200
         assert res['status'] == self.search_user_msg_res['status']
         assert res['msg'] == self.search_user_msg_res['msg']

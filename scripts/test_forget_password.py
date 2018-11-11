@@ -15,5 +15,6 @@ class TestForgetPassword:
     def test_forget_password(self):
         r = requests.post(self.forget_url, self.forget_params)
         res = r.json()
+        assert r.status_code == 200
         assert res['status'] == self.forget_res['status']
         assert res['msg'] == self.forget_res['msg']

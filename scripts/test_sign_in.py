@@ -16,5 +16,6 @@ class TestSignIn:
     def test_sign_in(self):
         r = requests.post(self.sign_in_url, self.sign_in_params)
         res = r.json()
+        assert r.status_code == 200
         assert res['status'] == self.sign_in_res['status']
         assert res['msg'] == self.sign_in_res['msg']

@@ -1,10 +1,11 @@
 import allure
+import unittest
 import pytest
 import requests
 from base.base_action import get_url, get_res, get_params
 
 
-class TestLogin:
+class TestLogin(unittest.TestCase):
 
     login_url = get_url('data', 'login', 'url')
     login_params = get_params('data', 'login', 'params')
@@ -23,8 +24,9 @@ class TestLogin:
         assert res['msg'] == self.login_res['msg']
 
     # 快速登录接口
-    @pytest.mark.skipif(condition=True, reason='万能验证码')
-    @allure.step('用户登录接口测试')
+    # @pytest.mark.skipif(condition=True, reason='万能验证码')
+    # @allure.step('用户登录接口测试')
+    @unittest.skipIf(condition=True, reason='万能验证码')
     def test_fast_login(self):
         r = requests.post(self.fast_login_url, self.fast_login_params)
         res = r.json()

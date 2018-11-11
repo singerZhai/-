@@ -1,7 +1,6 @@
 import allure
 import requests
 import pytest
-
 from base.base_action import get_url, get_res, get_token
 
 

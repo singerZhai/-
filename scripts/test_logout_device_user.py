@@ -1,6 +1,7 @@
+import pytest
 import allure
 import requests
-from base.base_action import get_url, get_res, sign_in_device_user, get_user_id
+from base.base_action import get_url, get_res, get_user_id
 
 
 class TestLogoutDeviceUser:

@@ -1,6 +1,6 @@
+import pytest
 import allure
 import requests
-
 from base.base_action import get_url, get_params, get_res
 
 

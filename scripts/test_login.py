@@ -1,7 +1,7 @@
 import allure
 import pytest
 import requests
-from base.base_action import get_url, get_res, get_params, assert_equal
+from base.base_action import get_url, get_res, get_params
 
 
 class TestLogin:

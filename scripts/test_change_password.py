@@ -3,7 +3,7 @@ import requests
 import pytest
 import allure
 from base.base_action import get_url, get_params, get_token, get_res, change_back_password_params, \
-    again_change_password, assert_equal
+    again_change_password
 
 
 class TestChangePassword:

@@ -80,3 +80,14 @@ logout_device_user:
   res:
     status: 0
     msg: '当前账号已回收'
+tablet_user_fast_login:
+  url: '/idcvideo-meeting/tablet/fastLogin.do'
+  params:
+    deviceUdid: '666666'
+    source: 6
+  res:
+    status: 200
+    msg: '请求成功'
+appointment_meeting:
+  url: '/idcvideo-meeting/meeting/createPreMeeting.do'
+  params:

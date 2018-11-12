@@ -91,3 +91,8 @@ tablet_user_fast_login:
 appointment_meeting:
   url: '/idcvideo-meeting/meeting/createPreMeeting.do'
   params:
+    name: '自动化测试计划研讨'
+    meetingAccessCode: '88000095'
+    # preBeginTime: '定义获取当前时间戳，然后加半个小时'
+    # preEndTime: '定义获取当前时间戳'
+    

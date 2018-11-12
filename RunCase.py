@@ -10,12 +10,12 @@ if __name__ == '__main__':
     # Report/路径必须提前创建，否则报错
     report_path = './Report/'
     # 获取当前时间
-    now_time = time.strftime('%Y-%m-%d_%H_%M_%S')
+    now_time = time.strftime('%Y-%m-%d %H_%M_%S')
     # 设置报告名称
     report_name = report_path + now_time + '-TestReport.html'
     # print(report_name)
     # 打开并写入报告
     with open(report_name, 'wb') as f:
         # 初始化报告生成对象
-        runner = HTMLTestRunner(stream=f, verbosity=2, title='接口测试报告', description='所有业务接口', tester='小翟')
+        runner = HTMLTestRunner(stream=f, verbosity=2, title='接口测试报告', description='正在编写全部业务接口测试脚本', tester='小翟')
         runner.run(discover)

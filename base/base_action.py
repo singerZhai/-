@@ -1,9 +1,10 @@
+import datetime
 from time import sleep
 import requests
 import yaml
 
-main_url = 'http://www.dingchengvideo.cn:8080'
-# main_url = 'http://www.freevoip.com.cn'
+# main_url = 'http://www.dingchengvideo.cn:8080'
+main_url = 'http://www.freevoip.com.cn'
 # main_url = '192.168.1.238:8080'
 
 
@@ -91,13 +92,31 @@ def get_user_id():
     return demo
 
 
+def get_meeting_start_time():
+    new_result = dict()
+    res = datetime.datetime.now() + datetime.timedelta(minutes=30)
+    result = res.strftime("%Y-%m-%d %H:%M:%S")
+    new_result['preBeginTime'] = result
+    return new_result
+
+
+def get_meeting_end_time():
+    new_result = dict()
+    res = datetime.datetime.now() + datetime.timedelta(hours=1)
+    result = res.strftime("%Y-%m-%d %H:%M:%S")
+    new_result['preEndTime'] = result
+    return new_result
+
+
 if __name__ == '__main__':
-    print(get_url('data', 'login', 'url'))
-    print(get_params('data', 'login', 'params'))
-    print(get_res('data', 'login', 'res'))
-    print(get_token())
-    print(change_back_password_params())
-    # 将密码更改回‘123456’
-    # again_change_password()
-    print(sign_in_device_user())
-    print(get_user_id())
+    # print(get_url('data', 'login', 'url'))
+    # print(get_params('data', 'login', 'params'))
+    # print(get_res('data', 'login', 'res'))
+    # print(get_token())
+    # print(change_back_password_params())
+    # # 将密码更改回‘123456’
+    # # again_change_password()
+    # print(sign_in_device_user())
+    # print(get_user_id())
+    print(get_meeting_start_time())
+    print(get_meeting_end_time())

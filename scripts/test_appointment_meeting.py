@@ -21,7 +21,3 @@ class TestAppointmentMeeting(unittest.TestCase):
         self.assertEqual(r.status_code, 200)
         self.assertEqual(res['status'], self.res['status'])
         self.assertEqual(res['msg'], self.res['msg'])
-
-    def test_delete_appointment_meeting(self):
-        u'删除指定的会议记录（只能删除自己创建的预约中的会议）'
-        

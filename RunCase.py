@@ -5,12 +5,12 @@ import time
 
 if __name__ == '__main__':
     case_path = './scripts/'
-    discover = unittest.defaultTestLoader.discover(case_path, pattern='test_create_fast_meeting.py')
+    discover = unittest.defaultTestLoader.discover(case_path, pattern='test_*.py')
     # 报告生成路径
     # Report/路径必须提前创建，否则报错
     report_path = './Report/'
     # 获取当前时间
-    now_time = time.strftime('%Y-%m-%d %H_%M_%S')
+    now_time = time.strftime('%Y-%m-%d %H-%M-%S')
     # 设置报告名称
     report_name = report_path + now_time + '-TestReport.html'
     # print(report_name)

@@ -91,7 +91,7 @@ tablet_user_fast_login:
 appointment_meeting:
   url: '/idcvideo-meeting/meeting/createPreMeeting.do'
   params:
-    name: '自动化测试计划研讨'
+    name: '自动化测试方案研讨'
     meetingAccessCode: '88000095'
     notifyType: 2
     summaryUsername: '15611066631'
@@ -108,3 +108,27 @@ create_fast_meeting:
   res:
     status: 200
     msg: '创建预约会议成功'
+meeting_status_search_with_me:
+  url: '/idcvideo-meeting/meeting/selectByStatus.do'
+  params:
+    status: '1'
+  res:
+    status: 200
+    msg: '请求成功'
+meeting_status_search_with_me_another:
+  url: '/idcvideo-meeting/meeting/selectByMultiStatus.do'
+  params:
+    status: '(1,2,3)'
+  res:
+    status: 200
+    msg: '请求成功'
+task_interface_search_need_relevance_meeting:
+  url: '/idcvideo-meeting/meeting/selectRelativeMeetingForTask.do'
+  res:
+    status: 200
+    msg: '请求成功'
+get_appoint_meeting_msg:
+  url: '/idcvideo-meeting/meeting/selectMeetingDetail.do'
+  res:
+    status: 200
+    msg: '请求成功'

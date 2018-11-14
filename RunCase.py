@@ -13,7 +13,6 @@ if __name__ == '__main__':
     now_time = time.strftime('%Y-%m-%d %H-%M-%S')
     # 设置报告名称
     report_name = report_path + now_time + '-TestReport.html'
-    # print(report_name)
     # 打开并写入报告
     with open(report_name, 'wb') as f:
         # 初始化报告生成对象

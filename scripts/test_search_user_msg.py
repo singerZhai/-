@@ -9,7 +9,7 @@ class TestSearchUserMsg(unittest.TestCase):
     search_user_msg_res = get_res('data', 'search_user_msg', 'res')
 
     def test_search_user_msg(self):
-        u"查询用户信息接口"
+        u"""查询用户信息接口"""
         user_token = get_token()
         r = requests.post(self.search_user_msg_url, user_token)
         res = r.json()

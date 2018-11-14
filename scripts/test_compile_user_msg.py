@@ -9,7 +9,7 @@ class TestCompileUserMsg(unittest.TestCase):
     res = get_res('data', 'compile_user_msg', 'res')
 
     def test_compile_user_msg(self):
-        u"编辑用户信息接口"
+        u"""编辑用户信息接口"""
         userToken = get_token()
         new_params = dict(self.params, **userToken)
         r = requests.post(self.url, new_params)
@@ -18,7 +18,3 @@ class TestCompileUserMsg(unittest.TestCase):
         self.assertEqual(r.status_code, 200)
         self.assertEqual(res['status'], self.res['status'])
         self.assertEqual(res['msg'], self.res['msg'])
-
-
-if __name__ == '__main__':
-    TestCompileUserMsg().test_compile_user_msg()

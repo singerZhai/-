@@ -12,7 +12,7 @@ class TestChangePassword(unittest.TestCase):
     change_back_password_params = change_back_password_params()
 
     def test_change_password(self):
-        u"修改密码接口"
+        u"""修改密码接口"""
         userToken = get_token()
         # 拼接两个字典
         new_params = dict(self.change_params, **userToken)

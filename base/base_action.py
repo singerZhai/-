@@ -100,6 +100,19 @@ def get_meeting_start_time():
     return new_result
 
 
+def get_meeting_id():
+    demo_dict = dict()
+    url = get_url('data', 'create_fast_meeting', 'url')
+    params = get_params('data', 'create_fast_meeting', 'params')
+    user_token = get_token()
+    new_params = dict(params, **user_token)
+    r = requests.post(url, new_params)
+    res = r.json()
+    result = res['data']['meetingId']['meetingId']
+    demo_dict['meetingId'] = result
+    return demo_dict
+
+
 def get_meeting_end_time():
     new_result = dict()
     res = datetime.datetime.now() + datetime.timedelta(hours=1)
@@ -120,3 +133,4 @@ if __name__ == '__main__':
     # print(get_user_id())
     print(get_meeting_start_time())
     print(get_meeting_end_time())
+    print(get_meeting_id())

@@ -10,7 +10,7 @@ class TestSignInDeviceUser(unittest.TestCase):
     res = get_res('data', 'sign_in_device_user', 'res')
 
     def test_sign_in_device_user(self):
-        u"注册设备用户接口"
+        u"""注册设备用户接口"""
         r = requests.post(self.url, self.params)
         res = r.json()
         print(res)

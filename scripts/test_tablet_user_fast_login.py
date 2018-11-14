@@ -11,7 +11,7 @@ class TestTabletUserFastLogin(unittest.TestCase):
     res = get_res('data', 'tablet_user_fast_login', 'res')
 
     def test_tablet_user_fast_login(self):
-        u"平板用户快速登录"
+        u"""平板用户快速登录接口"""
         # 先停1s，防止频繁调用接口
         sleep(1)
         r = requests.post(self.url, self.params)

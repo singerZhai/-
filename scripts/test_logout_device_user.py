@@ -10,7 +10,7 @@ class TestLogoutDeviceUser(unittest.TestCase):
     res = get_res('data', 'logout_device_user', 'res')
 
     def test_logout_device_user(self):
-        u"注销设备用户"
+        u"""注销设备用户接口"""
         r = requests.post(self.url, self.params)
         r = requests.post(self.url, self.params)
         res = r.json()

@@ -8,7 +8,7 @@ class TestLogout(unittest.TestCase):
     logout_res = get_res('data', 'logout', 'res')
 
     def test_logout(self):
-        u"用户退出接口"
+        u"""用户退出接口"""
         user_token = get_token()
         r = requests.post(self.logout_url, user_token)
         res = r.json()

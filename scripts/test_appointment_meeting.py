@@ -12,7 +12,7 @@ class TestAppointmentMeeting(unittest.TestCase):
     res = get_res('data', 'appointment_meeting', 'res')
 
     def test_appointment_meeting(self):
-        u'预约会议接口'
+        u"""预约会议接口"""
         user_token = get_token()
         new_params = dict(self.params, **self.preBeginTime, **self.preEndTime, **user_token)
         r = requests.post(self.url, new_params)

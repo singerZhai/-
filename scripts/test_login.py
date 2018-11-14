@@ -14,7 +14,7 @@ class TestLogin(unittest.TestCase):
     fast_login_res = get_res('data', 'fast_login', 'res')
 
     def test_login(self):
-        u"用户登录接口"
+        u"""用户登录接口"""
         r = requests.post(self.login_url, self.login_params)
         res = r.json()
         print(res)
@@ -24,7 +24,7 @@ class TestLogin(unittest.TestCase):
 
     @unittest.skipIf(condition=True, reason='万能验证码')
     def test_fast_login(self):
-        u"快速登录接口"
+        u"""快速登录接口"""
         r = requests.post(self.fast_login_url, self.fast_login_params)
         res = r.json()
         print(res)

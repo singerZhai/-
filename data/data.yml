@@ -108,6 +108,12 @@ create_fast_meeting:
   res:
     status: 200
     msg: '创建预约会议成功'
+get_meeting_id:
+  url: '/idcvideo-meeting/meeting/createMeetingByAccessCode.do'
+  params:
+    name: '15611066631'
+    meetingAccessCode: '88000091'
+    enterUsernames: '15611066631, 13987654321'
 meeting_status_search_with_me:
   url: '/idcvideo-meeting/meeting/selectByStatus.do'
   params:
@@ -132,3 +138,8 @@ get_appoint_meeting_msg:
   res:
     status: 200
     msg: '请求成功'
+delete_appointment_meeting_record:
+  url: '/idcvideo-meeting/meeting/deleteByMeetingId.do'
+  res:
+    status: 200
+    msg: '删除成功'

@@ -143,6 +143,23 @@ def adding_dict(dict1, dict2):
     return demo_dict
 
 
+def select_appointment_meetingId():
+    demo_dict = {}
+    url = get_url('data', 'meeting_status_search_with_me', 'url')
+    params = get_params('data', 'meeting_status_search_with_me', 'params')
+    userToken = get_token()
+    new_params = adding_dict(params, userToken)
+    r = requests.post(url, new_params)
+    res = r.json()
+    print(res)
+    demo_list = res['data']['list']
+
+    for dict in demo_list:
+        int_meetingId = dict['meetingId']
+        demo_dict['meetingId'] = int_meetingId
+        return demo_dict
+
+
 if __name__ == '__main__':
     # print(get_url('data', 'login', 'url'))
     # print(get_params('data', 'login', 'params'))

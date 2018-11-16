@@ -1,6 +1,7 @@
 import unittest
 import requests
-from base.base_action import get_url, get_params, get_res, get_meeting_start_time, get_meeting_end_time, get_token
+from base.base_action import get_url, get_params, get_res, get_meeting_start_time, get_meeting_end_time, get_token, \
+    select_appointment_meetingId, end_meeting
 
 
 class TestAppointmentMeeting(unittest.TestCase):
@@ -20,3 +21,5 @@ class TestAppointmentMeeting(unittest.TestCase):
         self.assertEqual(r.status_code, 200)
         self.assertEqual(res['status'], self.res['status'])
         self.assertEqual(res['msg'], self.res['msg'])
+        meetingId = select_appointment_meetingId()
+        end_meeting(meetingId)

@@ -20,7 +20,7 @@ class TestCreateFastMeeting(unittest.TestCase):
         self.assertEqual(r.status_code, 200)
         self.assertEqual(res['status'], self.res['status'])
         self.assertEqual(res['msg'], self.res['msg'])
-        result = res['data']['meeting']['meetingId']
+        result = res['data']['meetingId']['meetingId']
         meetingId_dict['meetingId'] = result
         end_meeting(meetingId_dict)
         result = res['data']['meetingId']['meetingId']

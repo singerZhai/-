@@ -102,12 +102,13 @@ def get_meeting_start_time():
 
 def get_meeting_id():
     demo_dict = dict()
-    url = get_url('data', 'create_fast_meeting', 'url')
-    params = get_params('data', 'create_fast_meeting', 'params')
+    url = get_url('data', 'get_meeting_id', 'url')
+    params = get_params('data', 'get_meeting_id', 'params')
     user_token = get_token()
     new_params = dict(params, **user_token)
     r = requests.post(url, new_params)
     res = r.json()
+    # print(res)
     result = res['data']['meetingId']['meetingId']
     demo_dict['meetingId'] = result
     return demo_dict
@@ -119,6 +120,27 @@ def get_meeting_end_time():
     result = res.strftime("%Y-%m-%d %H:%M:%S")
     new_result['preEndTime'] = result
     return new_result
+
+
+def end_meeting(meetingId_dict):
+    del_meeting_url = get_url('data', 'delete_appointment_meeting_record', 'url')
+    new_userToken = get_token()
+    delete_meeting_params = adding_dict(new_userToken, meetingId_dict)
+    requests.post(del_meeting_url, delete_meeting_params)
+
+
+dict1 = {'meetingId': 9185}
+dict2 = {'userToken': '0ce7a31a1491be0db46cea0532523e30'}
+
+
+def adding_dict(dict1, dict2):
+    # 将两个字典遍历，然后加到第三个字典中并return
+    demo_dict = dict()
+    for k, v in dict1.items():
+        demo_dict[k] = v
+    for k, v in dict2.items():
+        demo_dict[k] = v
+    return demo_dict
 
 
 if __name__ == '__main__':
@@ -133,4 +155,5 @@ if __name__ == '__main__':
     # print(get_user_id())
     print(get_meeting_start_time())
     print(get_meeting_end_time())
-    print(get_meeting_id())
+    # print(get_meeting_id())
+    print(adding_dict(dict1, dict2))

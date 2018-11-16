@@ -8,7 +8,6 @@ class TestCreateFastMeeting(unittest.TestCase):
     url = get_url('data', 'create_fast_meeting', 'url')
     params = get_params('data', 'create_fast_meeting', 'params')
     res = get_res('data', 'create_fast_meeting', 'res')
-    end_meeting_url = get_url('data', 'end_meeting', 'url')
 
     def test_create_fast_meeting(self):
         u"""创建快速会议接口"""

@@ -1,6 +1,6 @@
 import unittest
 import requests
-from base.base_action import get_url, get_res, get_meeting_id, get_token, adding_dict, end_meeting
+from base.base_action import get_url, get_res, get_meeting_id, end_meeting
 
 
 class TestGetAppointMeetingMsg(unittest.TestCase):

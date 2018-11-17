@@ -143,3 +143,14 @@ delete_appointment_meeting_record:
   res:
     status: 200
     msg: '删除成功'
+edit_appoint_meeting_msg:
+  url: '/idcvideo-meeting/meeting/editMeeting.do'
+  params:
+    name: '唯心'
+    topic: '唯心主义研讨会'
+    address: '唐山市'
+    summaryUsername: '123456789'
+    enterUsernames: '15611066631,123456789,13987654321'
+  res:
+    status: 200
+    msg: '编辑会议成功'

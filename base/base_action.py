@@ -129,10 +129,6 @@ def end_meeting(meetingId_dict):
     requests.post(del_meeting_url, delete_meeting_params)
 
 
-dict1 = {'meetingId': 9185}
-dict2 = {'userToken': '0ce7a31a1491be0db46cea0532523e30'}
-
-
 def adding_dict(dict1, dict2):
     # 将两个字典遍历，然后加到第三个字典中并return
     demo_dict = dict()
@@ -143,21 +139,46 @@ def adding_dict(dict1, dict2):
     return demo_dict
 
 
-def select_appointment_meetingId():
-    demo_dict = {}
+def select_appointment_meeting_msg():
+    # 获取预约会返回的会议相关信息
     url = get_url('data', 'meeting_status_search_with_me', 'url')
     params = get_params('data', 'meeting_status_search_with_me', 'params')
     userToken = get_token()
     new_params = adding_dict(params, userToken)
     r = requests.post(url, new_params)
     res = r.json()
-    print(res)
-    demo_list = res['data']['list']
+    return res
 
+
+def get_appointment_meetingId(appointment_meeting_msg):
+    # 利用预约会议的信息来获取meetingId
+    demo_dict = {}
+    demo_list = appointment_meeting_msg['data']['list']
     for dict in demo_list:
         int_meetingId = dict['meetingId']
         demo_dict['meetingId'] = int_meetingId
         return demo_dict
+
+
+def get_meeting_access_code(appointment_meeting_msg):
+    # 利用预约会议的信息来获取回忆接入码
+    demo_dict = {}
+    demo_list = appointment_meeting_msg['data']['list']
+    for dict in demo_list:
+        int_meeting_access_code = dict['meetingAccessCode']
+        demo_dict['meetingAccessCode'] = int_meeting_access_code
+        return demo_dict
+
+
+def appointment_meeting():
+    # 预约会议方法
+    url = get_url('data', 'appointment_meeting', 'url')
+    params = get_params('data', 'appointment_meeting', 'params')
+    preBeginTime = get_meeting_start_time()
+    preEndTime = get_meeting_end_time()
+    user_token = get_token()
+    new_params = dict(params, **preBeginTime, **preEndTime, **user_token)
+    requests.post(url, new_params)
 
 
 if __name__ == '__main__':
@@ -172,5 +193,3 @@ if __name__ == '__main__':
     # print(get_user_id())
     print(get_meeting_start_time())
     print(get_meeting_end_time())
-    # print(get_meeting_id())
-    print(adding_dict(dict1, dict2))

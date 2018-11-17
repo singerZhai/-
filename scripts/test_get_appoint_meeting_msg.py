@@ -1,6 +1,6 @@
 import unittest
 import requests
-from base.base_action import get_url, get_res, get_meeting_id, end_meeting
+from base.base_action import get_url, get_res, get_meeting_id_with_create_fast_meeting, end_meeting
 
 
 class TestGetAppointMeetingMsg(unittest.TestCase):
@@ -11,7 +11,7 @@ class TestGetAppointMeetingMsg(unittest.TestCase):
     def test_get_appoint_meeting_msg(self):
         u"""获取指定会议的详细信息接口"""
         meetingId_dict = dict()
-        params = get_meeting_id()
+        params = get_meeting_id_with_create_fast_meeting()
         r = requests.post(self.url, params)
         res = r.json()
         print(res)

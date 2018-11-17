@@ -1,6 +1,6 @@
 import unittest
 import requests
-from base.base_action import get_token, get_meeting_id, get_url, get_res
+from base.base_action import get_token, get_meeting_id_with_create_fast_meeting, get_url, get_res
 
 
 class TestDeleteAppointmentMeetingRecord(unittest.TestCase):
@@ -9,7 +9,7 @@ class TestDeleteAppointmentMeetingRecord(unittest.TestCase):
 
     def test_delete_appointment_meeting_record(self):
         u"""删除指定的会议记录接口（只能删除自己创建的预约中的会议）"""
-        meeting_id = get_meeting_id()
+        meeting_id = get_meeting_id_with_create_fast_meeting()
         user_token = get_token()
         params = dict(user_token, **meeting_id)
         print(params)

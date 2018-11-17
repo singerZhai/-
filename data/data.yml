@@ -166,4 +166,4 @@ edit_meeting_summary:
     summary: '接口自动化测试学习中'
   res:
     status: 200
-    msg: '编辑成功'
+    msg: '编辑会议纪要成功'

@@ -1,6 +1,5 @@
 import unittest
 import requests
-
 from base.base_action import get_url, get_res, get_params
 
 

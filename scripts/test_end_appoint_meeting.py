@@ -1,6 +1,6 @@
 import unittest
 import requests
-from base.base_action import get_url, get_res, create_fast_meeting, get_token, end_meeting
+from base.base_action import get_url, get_res, get_meeting_id_with_create_fast_meeting, get_token
 
 
 class TestEndAppointMeeting(unittest.TestCase):
@@ -11,7 +11,7 @@ class TestEndAppointMeeting(unittest.TestCase):
     def test_end_appoint_meeting(self):
         u"""结束指定的会议记录（只能结束自己创建的进行中的会议）"""
         # 先创建会议，然后用meetingId变量接收返回的meetingId
-        meetingId_dict = create_fast_meeting()
+        meetingId_dict = get_meeting_id_with_create_fast_meeting()
         userToken = get_token()
         params = dict(userToken, **meetingId_dict)
         r = requests.post(self.url, params)

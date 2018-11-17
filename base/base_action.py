@@ -100,7 +100,7 @@ def get_meeting_start_time():
     return new_result
 
 
-def get_meeting_id():
+def get_meeting_id_with_create_fast_meeting():
     demo_dict = dict()
     url = get_url('data', 'create_fast_meeting', 'url')
     params = get_params('data', 'create_fast_meeting', 'params')
@@ -181,18 +181,29 @@ def appointment_meeting():
     requests.post(url, new_params)
 
 
-def create_fast_meeting():
-    # 快速创建会议
-    url = get_url('data', 'create_fast_meeting', 'url')
-    params = get_params('data', 'create_fast_meeting', 'params')
-    meetingId_dict = dict()
-    user_token = get_token()
-    new_params = dict(params, **user_token)
-    r = requests.post(url, new_params)
+def get_appoint_meeting_msg():
+    # 获取指定会议的详细信息
+    url = get_url('data', 'get_appoint_meeting_msg', 'url')
+    params = get_meeting_id_with_create_fast_meeting()
+    r = requests.post(url, params)
     res = r.json()
-    result = res['data']['meetingId']['meetingId']
-    meetingId_dict['meetingId'] = result
+    return res
+
+
+def get_meetingId_with_get_appoint_meeting_msg(appoint_meeting_msg):
+    # 用获取指定会议信息方法返回的信息来获取meetingId
+    meetingId_dict = dict()
+    meetingId = appoint_meeting_msg['data']['meeting']['meetingId']
+    meetingId_dict['meetingId'] = meetingId
     return meetingId_dict
+
+
+def get_summaryId_with_get_appoint_meeting_msg(appoint_meeting_msg):
+    # 用获取指定会议信息方法返回的信息来获取summaryId
+    summaryId_dict = dict()
+    summaryId = appoint_meeting_msg['data']['summary']['summaryId']
+    summaryId_dict['summaryId'] = summaryId
+    return summaryId_dict
 
 
 if __name__ == '__main__':
@@ -207,3 +218,5 @@ if __name__ == '__main__':
     # print(get_user_id())
     print(get_meeting_start_time())
     print(get_meeting_end_time())
+    print(get_appoint_meeting_msg())
+    # print(get_meeting_id_with_create_fast_meeting())

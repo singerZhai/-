@@ -1,7 +1,7 @@
 import unittest
 from time import sleep
 import requests
-from base.base_action import get_url, get_params, get_res, sign_in_device_user
+from base.base_action import get_url, get_params, get_res
 
 
 class TestTabletUserFastLogin(unittest.TestCase):

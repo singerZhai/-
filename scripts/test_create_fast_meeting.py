@@ -23,6 +23,3 @@ class TestCreateFastMeeting(unittest.TestCase):
         result = res['data']['meetingId']['meetingId']
         meetingId_dict['meetingId'] = result
         end_meeting(meetingId_dict)
-        result = res['data']['meetingId']['meetingId']
-        meetingId_dict['meetingId'] = result
-        end_meeting(meetingId_dict)

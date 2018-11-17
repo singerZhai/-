@@ -18,6 +18,7 @@ class TestEditAppointMeetingMsg(unittest.TestCase):
         appoint_meeting_msg = select_appointment_meeting_msg()
         # 获取meetingId
         meetingId = get_appointment_meetingId(appoint_meeting_msg)
+        print(meetingId)
         # 获取会议接入码
         meeting_access_code = get_meeting_access_code(appoint_meeting_msg)
         # 需要更改的会议开始和结束时间

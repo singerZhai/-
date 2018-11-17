@@ -108,12 +108,6 @@ create_fast_meeting:
   res:
     status: 200
     msg: '创建预约会议成功'
-get_meeting_id:
-  url: '/idcvideo-meeting/meeting/createMeetingByAccessCode.do'
-  params:
-    name: '15611066631'
-    meetingAccessCode: '88000091'
-    enterUsernames: '15611066631, 13987654321'
 meeting_status_search_with_me:
   url: '/idcvideo-meeting/meeting/selectByStatus.do'
   params:
@@ -154,3 +148,22 @@ edit_appoint_meeting_msg:
   res:
     status: 200
     msg: '编辑会议成功'
+end_appoint_meeting:
+  url: '/idcvideo-meeting/meeting/endMeetingByMeetingId.do'
+  res:
+    status: 200
+    msg: '结束会议成功'
+select_meeting_modify_records:
+  url: '/idcvideo-meeting/meetingModifyRecords/selectMeetingModifyRecords.do'
+  params:
+    meetingId: 9280
+  res:
+    status: 200
+    msg: '请求成功'
+edit_meeting_summary:
+  url: '/idcvideo-meeting/summary/editMeetingSummary.do'
+  params:
+    summary: '接口自动化测试学习中'
+  res:
+    status: 200
+    msg: '编辑成功'

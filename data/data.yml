@@ -167,3 +167,15 @@ edit_meeting_summary:
   res:
     status: 200
     msg: '编辑会议纪要成功'
+create_task:
+  url: '/idcvideo-meeting/task/createTask.do'
+  params:
+    name: '自动化测试任务'
+    description: '此为设计接口自动化测试脚本任务'
+    schedule: 1
+    priority: 1
+    excutorUsernames: '15611066631'
+    ccUsernames: '15611066631,123456789'
+  res:
+    status: 200
+    msg: '请求成功'

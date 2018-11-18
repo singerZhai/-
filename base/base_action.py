@@ -206,6 +206,22 @@ def get_summaryId_with_get_appoint_meeting_msg(appoint_meeting_msg):
     return summaryId_dict
 
 
+def get_task_begin_time():
+    new_result = dict()
+    res = datetime.datetime.now() + datetime.timedelta(minutes=30)
+    result = res.strftime("%Y-%m-%d %H:%M:%S")
+    new_result['beginTime'] = result
+    return new_result
+
+
+def get_task_end_time():
+    new_result = dict()
+    res = datetime.datetime.now() + datetime.timedelta(hours=1)
+    result = res.strftime("%Y-%m-%d %H:%M:%S")
+    new_result['endTime'] = result
+    return new_result
+
+
 if __name__ == '__main__':
     # print(get_url('data', 'login', 'url'))
     # print(get_params('data', 'login', 'params'))

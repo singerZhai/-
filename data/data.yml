@@ -216,4 +216,3 @@ edit_appoint_task_msg:
   url: '/idcvideo-meeting/task/editTask.do'
   params:
     description: '修改为自动化测试方案研讨会'
-    

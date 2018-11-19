@@ -3,8 +3,8 @@ from time import sleep
 import requests
 import yaml
 
-# main_url = 'http://www.dingchengvideo.cn:8080'
-main_url = 'http://www.freevoip.com.cn'
+main_url = 'http://www.dingchengvideo.cn:8080'
+# main_url = 'http://www.freevoip.com.cn'
 # main_url = '192.168.1.238:8080'
 
 

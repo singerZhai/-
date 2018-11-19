@@ -2,7 +2,7 @@ import unittest
 import requests
 
 from base.base_action import get_url, get_params, get_summaryId_with_get_appoint_meeting_msg, get_appoint_meeting_msg, \
-    get_res, end_meeting, get_meetingId_with_get_appoint_meeting_msg
+    get_res, end_meeting, get_meetingid_with_get_appoint_meeting_msg
 
 
 class TestEditMeetingSummary(unittest.TestCase):
@@ -14,7 +14,7 @@ class TestEditMeetingSummary(unittest.TestCase):
         u"""编辑会议纪要接口"""
         appoint_meeting_msg = get_appoint_meeting_msg()
         summaryId_dict = get_summaryId_with_get_appoint_meeting_msg(appoint_meeting_msg)
-        meetingId_dict = get_meetingId_with_get_appoint_meeting_msg(appoint_meeting_msg)
+        meetingId_dict = get_meetingid_with_get_appoint_meeting_msg(appoint_meeting_msg)
         params = dict(meetingId_dict, **self.params_summary_text, **summaryId_dict)
         r = requests.post(self.url, params)
         res = r.json()

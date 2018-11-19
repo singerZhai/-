@@ -190,7 +190,7 @@ def get_appoint_meeting_msg():
     return res
 
 
-def get_meetingId_with_get_appoint_meeting_msg(appoint_meeting_msg):
+def get_meetingid_with_get_appoint_meeting_msg(appoint_meeting_msg):
     # 用获取指定会议信息方法返回的信息来获取meetingId
     meetingId_dict = dict()
     meetingId = appoint_meeting_msg['data']['meeting']['meetingId']
@@ -220,6 +220,46 @@ def get_task_end_time():
     result = res.strftime("%Y-%m-%d %H:%M:%S")
     new_result['endTime'] = result
     return new_result
+
+
+def create_task_in_meeting_and_return_meeting_id():
+    url = get_url('data', 'create_task', 'url')
+    params = get_params('data', 'create_task', 'params')
+    meetingId = get_meeting_id_with_create_fast_meeting()
+    beginTime = get_task_begin_time()
+    endTime = get_task_end_time()
+    userToken = get_token()
+    new_params = dict(userToken, **meetingId, **beginTime, **endTime, **params)
+    requests.post(url, new_params)
+    end_meeting(meetingId)
+    return meetingId
+
+
+def select_task_list_by_create_task():
+    create_task_url = get_url('data', 'create_task', 'url')
+    create_task_params = get_params('data', 'create_task', 'params')
+    select_url = get_url('data', 'select_task_i_create', 'url')
+    select_params = get_params('data', 'select_task_i_create', 'params')
+    meetingId = get_meeting_id_with_create_fast_meeting()
+    beginTime = get_task_begin_time()
+    endTime = get_task_end_time()
+    userToken = get_token()
+    new_params = dict(userToken, **meetingId, **beginTime, **endTime, **create_task_params)
+    requests.post(create_task_url, new_params)
+    end_meeting(meetingId)
+    userToken = get_token()
+    new_params = dict(userToken, **select_params)
+    r = requests.post(select_url, new_params)
+    res = r.json()
+    return res['data']['list']
+
+
+def get_first_taskId_by_task_list(task_list_msg):
+    first_task_dict = dict()
+    for first_task in task_list_msg:
+        first_taskId =  first_task['taskId']
+        first_task_dict['taskId'] = first_taskId
+        return first_task_dict
 
 
 if __name__ == '__main__':

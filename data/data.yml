@@ -179,3 +179,41 @@ create_task:
   res:
     status: 200
     msg: '请求成功'
+search_task_in_meeting:
+  url: '/idcvideo-meeting/task/selectMeetingTask.do'
+  res:
+    status: 200
+    msg: '请求成功'
+get_appoint_status_task_list:
+  url: '/idcvideo-meeting/task/selectByStatus.do'
+  params:
+    status: 1
+    pageNo: 1
+  res:
+    status: 200
+    msg: '请求成功'
+select_task_i_create:
+  url: '/idcvideo-meeting/task/selectByCreateUser.do'
+  params:
+    pageNo: 1
+  res:
+    status: 200
+    msg: '请求成功'
+select_task_copy_to_me:
+  url: '/idcvideo-meeting/task/selectByCCUser.do'
+  params:
+    pageNo: 1
+    pageSize: 5
+  res:
+    status: 200
+    msg: '请求成功'
+get_appoint_task_msg:
+  url: '/idcvideo-meeting/task/selectTaskDetail.do'
+  res:
+    status: 200
+    msg: '请求成功'
+edit_appoint_task_msg:
+  url: '/idcvideo-meeting/task/editTask.do'
+  params:
+    description: '修改为自动化测试方案研讨会'
+    

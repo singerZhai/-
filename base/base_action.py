@@ -256,7 +256,6 @@ def select_task_list_and_meetingId_by_create_task():
 
 def get_first_task_id_by_task_list(task_list_msg):
     first_task_dict = dict()
-    print(task_list_msg)
     for first_task in task_list_msg:
         first_taskId = first_task['taskId']
         first_task_dict['taskId'] = first_taskId
@@ -270,6 +269,17 @@ def delete_by_taskId(taskId):
     requests.post(url, params)
 
 
+def edit_appoint_task_msg():
+    url = get_url('data', 'edit_appoint_task_msg', 'url')
+    params = get_params('data', 'edit_appoint_task_msg', 'params')
+    task_list, meetingId = select_task_list_and_meetingId_by_create_task()
+    taskId = get_first_task_id_by_task_list(task_list)
+    edit_begin_time = get_task_begin_time()
+    edit_end_time = get_task_end_time()
+    userToken = get_token()
+    new_params = dict(userToken, **taskId, **meetingId, **edit_begin_time, **edit_end_time, **params)
+    requests.post(url, new_params)
+    return taskId, meetingId
 
 
 if __name__ == '__main__':

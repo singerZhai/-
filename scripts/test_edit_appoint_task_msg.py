@@ -1,12 +1,12 @@
 import unittest
 import requests
+
 from base.base_action import get_url, get_params, get_res, get_task_begin_time, get_task_end_time, get_token, \
-    get_meeting_id_with_create_fast_meeting, end_meeting, select_task_list_and_meetingId_by_create_task, \
+    end_meeting, select_task_list_and_meetingId_by_create_task, \
     get_first_task_id_by_task_list, delete_by_taskId
 
 
 class TestEditAppointTaskMsg(unittest.TestCase):
-
     url = get_url('data', 'edit_appoint_task_msg', 'url')
     params = get_params('data', 'edit_appoint_task_msg', 'params')
     res = get_res('data', 'edit_appoint_task_msg', 'res')

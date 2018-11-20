@@ -240,3 +240,8 @@ delete_by_taskId:
   res:
     status: 200
     msg: '删除成功'
+select_task_modify_records:
+  url: '/idcvideo-meeting/taskModifyRecords/selectTaskModifyRecords.do'
+  res:
+    status: 200
+    msg: '请求成功'

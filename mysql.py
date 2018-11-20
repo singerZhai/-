@@ -7,7 +7,7 @@ def mysql_select(sql):
                              user='root',
                              password='123456',
                              port=3306,
-                             database='iwebshop',
+                             database='students',
                              charset='utf8')
         cur = db.cursor(cursor=pymysql.cursors.DictCursor)
         # print('打开')
@@ -23,8 +23,8 @@ def mysql_select(sql):
 
 
 if __name__ == '__main__':
-    select_sql = 'select * from iwebshop_user where username = "singer"'
+    select_sql = 'select * from students where studentNo = "001"'
     res = mysql_select(select_sql)
     print(res)
-    assert res['id'] == 2
+    # assert res['id'] == 2
     print('测试结束')

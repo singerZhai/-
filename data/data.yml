@@ -170,7 +170,7 @@ edit_meeting_summary:
 create_task:
   url: '/idcvideo-meeting/task/createTask.do'
   params:
-    name: '自动化测试任务'
+    name: '唯心'
     description: '此为设计接口自动化测试脚本任务'
     schedule: 1
     priority: 1
@@ -215,4 +215,28 @@ get_appoint_task_msg:
 edit_appoint_task_msg:
   url: '/idcvideo-meeting/task/editTask.do'
   params:
-    description: '修改为自动化测试方案研讨会'
+    name: '修改为:tester_home'
+    description: '修改:自动化测试方案研讨会'
+    schedule: 6
+    executeUsernames: '15611066631'
+    priority: 66
+  res:
+    status: 200
+    msg: '请求成功'
+modify_task_schedule:
+  url: '/idcvideo-meeting/task/modifyTaskSchedule.do'
+  params:
+    schedule: 80
+  res:
+    status: 200
+    msg: '请求成功'
+cancel_task:
+  url: '/idcvideo-meeting/task/cancelTask.do'
+  res:
+    status: 200
+    msg: '请求成功'
+delete_by_taskId:
+  url: '/idcvideo-meeting/task/deleteByTaskId.do'
+  res:
+    status: 200
+    msg: '删除成功'

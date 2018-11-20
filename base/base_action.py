@@ -3,8 +3,8 @@ from time import sleep
 import requests
 import yaml
 
-main_url = 'http://www.dingchengvideo.cn:8080'
-# main_url = 'http://www.freevoip.com.cn'
+# main_url = 'http://www.dingchengvideo.cn:8080'
+main_url = 'http://www.freevoip.com.cn'
 # main_url = '192.168.1.238:8080'
 
 
@@ -235,7 +235,7 @@ def create_task_in_meeting_and_return_meeting_id():
     return meetingId
 
 
-def select_task_list_by_create_task():
+def select_task_list_and_meetingId_by_create_task():
     create_task_url = get_url('data', 'create_task', 'url')
     create_task_params = get_params('data', 'create_task', 'params')
     select_url = get_url('data', 'select_task_i_create', 'url')
@@ -251,15 +251,25 @@ def select_task_list_by_create_task():
     new_params = dict(userToken, **select_params)
     r = requests.post(select_url, new_params)
     res = r.json()
-    return res['data']['list']
+    return res['data']['list'], meetingId
 
 
-def get_first_taskId_by_task_list(task_list_msg):
+def get_first_task_id_by_task_list(task_list_msg):
     first_task_dict = dict()
+    print(task_list_msg)
     for first_task in task_list_msg:
-        first_taskId =  first_task['taskId']
+        first_taskId = first_task['taskId']
         first_task_dict['taskId'] = first_taskId
         return first_task_dict
+
+
+def delete_by_taskId(taskId):
+    url = get_url('data', 'delete_by_taskId', 'url')
+    userToken = get_token()
+    params = dict(taskId, **userToken)
+    requests.post(url, params)
+
+
 
 
 if __name__ == '__main__':

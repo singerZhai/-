@@ -25,6 +25,6 @@ def mysql_select(sql):
 if __name__ == '__main__':
     select_sql = 'select * from students where studentNo = "001"'
     res = mysql_select(select_sql)
-    print(res)
-    # assert res['id'] == 2
+    print(res['name'])
+    assert res['name'] == '王昭君'
     print('测试结束')

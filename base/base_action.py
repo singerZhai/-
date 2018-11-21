@@ -6,6 +6,7 @@ import yaml
 # main_url = 'http://www.dingchengvideo.cn:8080'
 main_url = 'http://www.freevoip.com.cn'
 # main_url = '192.168.1.238:8080'
+# main_url = '192.168.1.66:8080'
 
 
 def get_url(path, urls, url_name):

@@ -1,4 +1,5 @@
 import datetime
+import time
 from time import sleep
 import requests
 import yaml
@@ -283,6 +284,13 @@ def edit_appoint_task_msg():
     return taskId, meetingId
 
 
+def get_date():
+    date_dict = dict()
+    now_date = time.strftime('%Y-%m-%d')
+    date_dict['date'] = now_date
+    return date_dict
+
+
 if __name__ == '__main__':
     # print(get_url('data', 'login', 'url'))
     # print(get_params('data', 'login', 'params'))
@@ -293,7 +301,8 @@ if __name__ == '__main__':
     # # again_change_password()
     # print(sign_in_device_user())
     # print(get_user_id())
-    print(get_meeting_start_time())
-    print(get_meeting_end_time())
-    print(get_appoint_meeting_msg())
+    # print(get_meeting_start_time())
+    # print(get_meeting_end_time())
+    # print(get_appoint_meeting_msg())
     # print(get_meeting_id_with_create_fast_meeting())
+    print(get_date())

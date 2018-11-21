@@ -245,3 +245,8 @@ select_task_modify_records:
   res:
     status: 200
     msg: '请求成功'
+select_schedule:
+  url: '/idcvideo-meeting/schedule/selectSchedule.do'
+  res:
+    status: 200
+    msg: '请求成功'

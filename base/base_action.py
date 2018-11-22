@@ -3,7 +3,7 @@ import time
 from time import sleep
 import requests
 import yaml
-from mysql import OpenDB
+from MySQL import OpenDB
 
 
 # main_url = 'http://www.dingchengvideo.cn:8080'

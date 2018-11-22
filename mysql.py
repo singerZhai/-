@@ -6,7 +6,8 @@ class OpenDB:
         # 初始化
         try:
             self.conn = connect(host='localhost',
-                                port=3306, user=user,
+                                port=3306,
+                                user=user,
                                 password=password,
                                 database=database,
                                 charset=charset)
@@ -18,7 +19,7 @@ class OpenDB:
         # 返回游标进行执行操作
         return self.cs
 
-    def __exit__(self):
+    def __exit__(self, exc_type, exc_val, exc_tb):
         # 结束提交数据并关闭数据库
         self.conn.commit()
         self.cs.close()

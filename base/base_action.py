@@ -299,7 +299,7 @@ def select_sql(sql):
         # 执行sql
         f.execute(sql)
         # 获取数据
-        result = f.fetchone()
+        result = f.fetchall()
         return result
 
 

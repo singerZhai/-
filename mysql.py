@@ -1,30 +1,25 @@
-import pymysql
+from pymysql import connect, cursors
 
 
-def mysql_select(sql):
-    try:
-        db = pymysql.connect(host='127.0.0.1',
-                             user='root',
-                             password='123456',
-                             port=3306,
-                             database='students',
-                             charset='utf8')
-        cur = db.cursor(cursor=pymysql.cursors.DictCursor)
-        # print('打开')
-        cur.execute(sql)
-        data = cur.fetchone()
-        return data
-    except Exception:
-        print('Error:数据库连接异常！！！！！！')
-    finally:
-        cur.close()
-        db.close()
-        # print('数据库已关闭连接')
+class OpenDB:
+    def __init__(self, user='root', password='123456', database='students', charset='utf8'):
+        # 初始化
+        try:
+            self.conn = connect(host='localhost',
+                                port=3306, user=user,
+                                password=password,
+                                database=database,
+                                charset=charset)
+            self.cs = self.conn.cursor(cursor=cursors.DictCursor)
+        except Exception:
+            print('数据库连接异常')
 
+    def __enter__(self):
+        # 返回游标进行执行操作
+        return self.cs
 
-if __name__ == '__main__':
-    select_sql = 'select * from students where studentNo = "001"'
-    res = mysql_select(select_sql)
-    print(res['name'])
-    assert res['name'] == '王昭君'
-    print('测试结束')
+    def __exit__(self):
+        # 结束提交数据并关闭数据库
+        self.conn.commit()
+        self.cs.close()
+        self.conn.close()

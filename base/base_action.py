@@ -3,6 +3,8 @@ import time
 from time import sleep
 import requests
 import yaml
+from mysql import OpenDB
+
 
 # main_url = 'http://www.dingchengvideo.cn:8080'
 main_url = 'http://www.freevoip.com.cn'
@@ -291,6 +293,16 @@ def get_date():
     return date_dict
 
 
+def select_sql(sql):
+    # 只能查询返回一条完整数据
+    with OpenDB() as f:
+        # 执行sql
+        f.execute(sql)
+        # 获取数据
+        result = f.fetchone()
+        return result
+
+
 if __name__ == '__main__':
     # print(get_url('data', 'login', 'url'))
     # print(get_params('data', 'login', 'params'))
@@ -301,8 +313,11 @@ if __name__ == '__main__':
     # # again_change_password()
     # print(sign_in_device_user())
     # print(get_user_id())
-    # print(get_meeting_start_time())
-    # print(get_meeting_end_time())
+    print(get_meeting_start_time())
+    print(get_meeting_end_time())
     # print(get_appoint_meeting_msg())
     # print(get_meeting_id_with_create_fast_meeting())
     print(get_date())
+    sql = "select count(*) from goods"
+    res = select_sql(sql)
+    print(res)

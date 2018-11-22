@@ -299,7 +299,7 @@ def select_sql(sql):
         # 执行sql
         f.execute(sql)
         # 获取数据
-        result = f.fetchall()
+        result = f.fetchone()
         return result
 
 
@@ -318,6 +318,6 @@ if __name__ == '__main__':
     # print(get_appoint_meeting_msg())
     # print(get_meeting_id_with_create_fast_meeting())
     print(get_date())
-    sql = "select count(*) from goods"
+    sql = "select * from goods"
     res = select_sql(sql)
     print(res)

@@ -250,3 +250,11 @@ select_schedule:
   res:
     status: 200
     msg: '请求成功'
+send_message_group_chat:
+  url: '/idcvideo-meeting/message/sendMessageGroupChat.do'
+  params:
+    fromUsername: '15611066631'
+    content: '此为测试留言数据'
+  res:
+    status: 200
+    res: '请求成功'

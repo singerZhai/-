@@ -10,22 +10,23 @@ from MySQL import OpenDB
 main_url = 'http://www.freevoip.com.cn'
 # main_url = '192.168.1.238:8080'
 # main_url = '192.168.1.66:8080'
+path = './data/'
 
 
-def get_url(path, urls, url_name):
-    with open('./data/' + path + '.yml', encoding='utf-8') as f:
+def get_url(file, urls, url_name):
+    with open(path + file + '.yml', encoding='utf-8') as f:
         result = yaml.load(f)
         return main_url + result[urls][url_name]
 
 
-def get_params(path, urls, params):
-    with open('./data/' + path + '.yml', encoding='utf-8') as f:
+def get_params(file, urls, params):
+    with open(path + file + '.yml', encoding='utf-8') as f:
         result = yaml.load(f)
         return result[urls][params]
 
 
-def get_res(path, urls, res):
-    with open('./data/' + path + '.yml', encoding='utf-8') as f:
+def get_res(file, urls, res):
+    with open(path + file + '.yml', encoding='utf-8') as f:
         result = yaml.load(f)
         return result[urls][res]
 
@@ -266,6 +267,10 @@ def get_first_task_id_by_task_list(task_list_msg):
         return first_task_dict
 
 
+def get_group_id(task_list_msg):
+    first_task_dict = dict()
+
+
 def delete_by_taskId(taskId):
     url = get_url('data', 'delete_by_taskId', 'url')
     userToken = get_token()
@@ -313,11 +318,11 @@ if __name__ == '__main__':
     # # again_change_password()
     # print(sign_in_device_user())
     # print(get_user_id())
-    print(get_meeting_start_time())
-    print(get_meeting_end_time())
+    # print(get_meeting_start_time())
+    # print(get_meeting_end_time())
     # print(get_appoint_meeting_msg())
     # print(get_meeting_id_with_create_fast_meeting())
-    print(get_date())
-    sql = "select * from goods"
+    # print(get_date())
+    sql = "select name,price from goods order by price desc limit 1"
     res = select_sql(sql)
     print(res)

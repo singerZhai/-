@@ -267,8 +267,11 @@ def get_first_task_id_by_task_list(task_list_msg):
         return first_task_dict
 
 
-def get_group_id(task_list_msg):
-    first_task_dict = dict()
+def get_group_id_by_task_list(task_list_msg):
+    first_group_dict = dict()
+    first_task = task_list_msg[0]['groupId']
+    first_group_dict['groupId'] = first_task
+    return first_group_dict
 
 
 def delete_by_taskId(taskId):
@@ -296,6 +299,18 @@ def get_date():
     now_date = time.strftime('%Y-%m-%d')
     date_dict['date'] = now_date
     return date_dict
+
+
+def send_message_group_chat_content():
+    # 创建任务并且留言，以备查询留言case调用
+    url = get_url('data', 'send_message_group_chat_content', 'url')
+    params = get_params('data', 'send_message_group_chat_content', 'params')
+    task_list_msg, meetingId = select_task_list_and_meetingId_by_create_task()
+    groupId = get_group_id_by_task_list(task_list_msg)
+    taskId = get_first_task_id_by_task_list(task_list_msg)
+    new_params = dict(groupId, **params)
+    requests.post(url, new_params)
+    return meetingId, taskId, groupId
 
 
 def select_sql(sql):

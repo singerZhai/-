@@ -258,3 +258,19 @@ send_message_group_chat:
   res:
     status: 200
     res: '请求成功'
+send_message_group_chat_content:
+  url: '/idcvideo-meeting/message/sendMessageGroupChatContent.do'
+  params:
+    fromUsername: '15611066631'
+    content: '留言测试数据'
+  res:
+    status: 200
+    msg: '请求成功'
+select_message_group_chat:
+  url: '/idcvideo-meeting/message/selectMessageGroupChat.do'
+  params:
+    pageNo: 1
+    pageSize: 1
+  res:
+    status: 200
+    msg: '请求成功'

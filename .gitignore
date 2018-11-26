@@ -107,4 +107,4 @@ venv.bak/
 .pytest_cache
 report
 .idea
-
+.gitignore

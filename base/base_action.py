@@ -313,19 +313,6 @@ def send_message_group_chat_content():
     return meetingId, taskId, groupId
 
 
-def log():
-    logger = logging.getLogger()
-    logger.setLevel(logging.DEBUG)
-    fh = logging.FileHandler('../port.log')
-    ch = logging.StreamHandler()
-    formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-    fh.setFormatter(formatter)
-    ch.setFormatter(formatter)
-    logger.addHandler(fh)
-    logger.addHandler(ch)
-    return logger
-
-
 def select_sql(sql):
     # 只能查询返回一条完整数据
     with OpenDB() as f:
@@ -333,7 +320,6 @@ def select_sql(sql):
         f.execute(sql)
         # 获取数据
         result = f.fetchone()
-        log().info('SQL查询结果为: %s' % result)
         return result
 
 
@@ -355,4 +341,3 @@ if __name__ == '__main__':
     sql = "select name,price from goods order by price desc limit 1"
     res = select_sql(sql)
     print(res)
-    log()

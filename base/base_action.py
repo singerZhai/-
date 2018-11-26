@@ -313,6 +313,10 @@ def send_message_group_chat_content():
     return meetingId, taskId, groupId
 
 
+params_log = '传入参数：'
+res_log = '返回数据：'
+
+
 def select_sql(sql):
     # 只能查询返回一条完整数据
     with OpenDB() as f:

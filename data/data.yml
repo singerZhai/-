@@ -61,7 +61,6 @@ compile_user_msg:
   params:
     nickname: '翟'
     sex: 0
-    file:
   res:
     status: 200
     msg: '编辑成功'
@@ -92,7 +91,7 @@ appointment_meeting:
   url: '/idcvideo-meeting/meeting/createPreMeeting.do'
   params:
     name: '自动化测试方案研讨'
-    meetingAccessCode: '88000095'
+    meetingAccessCode: '88000090'
     notifyType: 2
     summaryUsername: '15611066631'
     enterUsernames: '13987654321,15611066631'
@@ -103,7 +102,7 @@ create_fast_meeting:
   url: '/idcvideo-meeting/meeting/createMeetingByAccessCode.do'
   params:
     name: '15611066631'
-    meetingAccessCode: '88000095'
+    meetingAccessCode: '815611066631'
     enterUsernames: '15611066631,13987654321'
   res:
     status: 200
@@ -254,10 +253,11 @@ send_message_group_chat:
   url: '/idcvideo-meeting/message/sendMessageGroupChat.do'
   params:
     fromUsername: '15611066631'
-    content: '此为测试留言数据'
+    conType: 2
+    content: '留言数据为：自动化测试数据，上传类型为二进制'
   res:
     status: 200
-    res: '请求成功'
+    msg: '请求成功'
 send_message_group_chat_content:
   url: '/idcvideo-meeting/message/sendMessageGroupChatContent.do'
   params:

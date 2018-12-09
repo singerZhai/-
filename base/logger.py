@@ -2,10 +2,13 @@ import logging, time
 import os
 
 # log_path是存放日志的路径
+import traceback
+
 cur_path = os.path.dirname(os.path.realpath(__file__))
 log_path = os.path.join(os.path.dirname(cur_path), 'logs')
 # 如果不存在这个logs文件夹，就自动创建一个
-if not os.path.exists(log_path): os.mkdir(log_path)
+if not os.path.exists(log_path):
+    os.mkdir(log_path)
 
 
 class Log():
@@ -15,7 +18,7 @@ class Log():
         self.logger = logging.getLogger()
         self.logger.setLevel(logging.DEBUG)
         # 日志输出格式
-        self.formatter = logging.Formatter('[%(asctime)s] - %(filename)s] - %(levelname)s: %(message)s')
+        self.formatter = logging.Formatter('[%(asctime)s] - %(levelname)s: %(message)s')
 
     def __console(self, level, message):
         # 创建一个FileHandler，用于写到本地
@@ -26,7 +29,7 @@ class Log():
 
         # 创建一个StreamHandler,用于输出到控制台
         ch = logging.StreamHandler()
-        ch.setLevel(logging.DEBUG)
+        ch.setLevel(logging.WARNING)
         ch.setFormatter(self.formatter)
         self.logger.addHandler(ch)
 

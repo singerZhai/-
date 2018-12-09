@@ -1,15 +1,13 @@
 import datetime
 import time
+import traceback
 from time import sleep
 import requests
 import yaml
 from MySQL import OpenDB
-import logging
+from base.logger import Log
 
-
-# main_url = 'http://www.dingchengvideo.cn:8080'
-main_url = 'http://www.freevoip.com.cn'
-# main_url = '192.168.1.66:8080'
+main_url = 'http://www.dingchengvideo.cn:8080'
 path = './data/'
 
 
@@ -29,6 +27,17 @@ def get_res(file, urls, res):
     with open(path + file + '.yml', encoding='utf-8') as f:
         result = yaml.load(f)
         return result[urls][res]
+
+
+def load_image_PIL(filename):
+    # 读取图片方法
+    import os
+    from PIL import Image
+    isExit = os.path.isfile(filename)
+    if isExit is False:
+        print("打开失败!")
+    img = Image.open(filename)
+    return img
 
 
 def change_back_password_params():
@@ -113,7 +122,6 @@ def get_meeting_id_with_create_fast_meeting():
     new_params = dict(params, **user_token)
     r = requests.post(url, new_params)
     res = r.json()
-    # print(res)
     result = res['data']['meetingId']['meetingId']
     demo_dict['meetingId'] = result
     return demo_dict
@@ -315,6 +323,36 @@ def send_message_group_chat_content():
 
 params_log = '传入参数：'
 res_log = '返回数据：'
+start_log = '==========start=========='
+end_log = '========== end =========='
+runtime_log = 'runtime: '
+end_meeting_log = '结束会议'
+end_task_log = '结束任务'
+
+
+def now_time():
+    result = time.time()
+    return result
+
+
+def runtime(start_time):
+    end_time = time.time()
+    result = end_time - start_time
+    res = round(result, 2)
+    return runtime_log + str(res) + 's'
+
+
+def assert_equal(result, expect):
+    try:
+        assert str(result) == str(expect)
+        global logger
+        logger = Log()
+        logger.info('断言结果:  ' + str(result) + ' == ' + str(expect))
+    except AssertionError:
+        s = traceback.format_exc()
+        logger.info(s)
+        logger.error('断言结果:  ' + str(result) + ' != ' + str(expect))
+        raise
 
 
 def select_sql(sql):
@@ -345,3 +383,5 @@ if __name__ == '__main__':
     sql = "select name,price from goods order by price desc limit 1"
     res = select_sql(sql)
     print(res)
+    img = load_image_PIL('../data/photo.jpg')
+    print(img)

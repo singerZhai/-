@@ -1,16 +1,18 @@
 import json
-import unittest
+
 import requests
-from base.base_action import get_url, get_params, get_res, start_log, params_log, res_log, end_log, now_time, runtime, \
+import unittest
+
+from base.base_action import get_url, get_params, get_res, now_time, start_log, runtime, end_log, params_log, res_log, \
     assert_equal
 from base.logger import Log
 
 
-class TestSignIn(unittest.TestCase):
+class TestCreateGroup(unittest.TestCase):
 
-    url = get_url('data', 'sign_in', 'url')
-    params = get_params('data', 'sign_in', 'params')
-    res = get_res('data', 'sign_in', 'res')
+    url = get_url('data', 'create_group', 'url')
+    params = get_params('data', 'create_group', 'params')
+    res = get_res('data', 'create_group', 'res')
 
     def setUp(self):
         global logger
@@ -18,18 +20,18 @@ class TestSignIn(unittest.TestCase):
         global start_time
         start_time = now_time()
         logger.warning(start_log)
-        logger.info('用户注册接口')
+        logger.info('创建群组接口')
 
     def tearDown(self):
         run_time = runtime(start_time)
         logger.warning(run_time)
         logger.warning(end_log)
 
-    @unittest.skipIf(condition=True, reason='万能验证码')
-    def test_sign_in(self):
-        u"""用户注册接口"""
+    def test_create_group(self):
+        u"""创建群组接口"""
         logger.info(params_log + str(self.params))
-        r = requests.post(self.url, self.params)
+        r = requests.post(self.url, data=self.params)
+        logger.info('进行接口请求')
         res = r.json()
         result = json.dumps(res, ensure_ascii=False)
         logger.info(res_log + result)

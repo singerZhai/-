@@ -1,3 +1,4 @@
+import json
 import unittest
 import requests
 from base.base_action import get_url, get_res, edit_appoint_task_msg, end_meeting, delete_by_taskId, start_log, res_log, \
@@ -29,7 +30,8 @@ class TestSelectTaskModifyRecords(unittest.TestCase):
         logger.info('获取taskId和meetingId')
         r = requests.post(self.url, taskId)
         res = r.json()
-        logger.info(res_log + str(res))
+        result = json.dumps(res, ensure_ascii=False)
+        logger.info(res_log + result)
         assert_equal(r.status_code, 200)
         assert_equal(res['status'], self.res['status'])
         assert_equal(res['msg'], self.res['msg'])

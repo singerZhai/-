@@ -274,3 +274,34 @@ select_message_group_chat:
   res:
     status: 200
     msg: '请求成功'
+create_group:
+  url: '/idcvideo-meeting/group/createGroup.do'
+  params:
+    groupName: '15611066631'
+    createUsername: '15611066631'
+    introduction: '此为接口测试群组数据'
+    usernames: '15611066631,13987654321'
+  res:
+    status: 200
+    msg: '请求成功'
+select_by_from_username:
+  url: '/idcvideo-meeting/group/selectByFromUsername.do'
+  params:
+    fromUsername: '15611066631'
+  res:
+    status: 200
+    msg: '请求成功'
+select_conversation:
+  url: '/idcvideo-meeting/conversation/selectConversation.do'
+  params:
+    fromUsername: '15611066631'
+  res:
+    status: 200
+    msg: '请求成功'
+reset_unread_count_group_chat:
+  url: '/idcvideo-meeting/conversation/resetUnreadCountGroupChat.do'
+  params:
+    fromUsername: '15611066631'
+  res:
+    status: 200
+    msg: '请求成功'

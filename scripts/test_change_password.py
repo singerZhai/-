@@ -1,3 +1,4 @@
+import json
 from time import sleep
 import requests
 import unittest
@@ -35,7 +36,8 @@ class TestChangePassword(unittest.TestCase):
         logger.info(params_log + str(new_params))
         r = requests.post(self.url, new_params)
         res = r.json()
-        logger.info(res_log + str(res))
+        result = json.dumps(res, ensure_ascii=False)
+        logger.info(res_log + result)
         assert_equal(r.status_code, 200)
         assert_equal(res['status'], self.res['status'])
         assert_equal(res['msg'], self.res['msg'])

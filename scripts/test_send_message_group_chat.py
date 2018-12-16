@@ -1,3 +1,4 @@
+import json
 import unittest
 import requests
 from base.base_action import get_url, get_params, get_res, get_group_id_by_task_list, \
@@ -36,7 +37,8 @@ class TestSendMessageGroupChat(unittest.TestCase):
         logger.info('上传文件为: ./data/photo.jpg')
         r = requests.post(self.url, params=new_params, files=files)
         res = r.json()
-        logger.info(res_log + str(res))
+        result = json.dumps(res, ensure_ascii=False)
+        logger.info(res_log + result)
         assert_equal(r.status_code, 200)
         assert_equal(res['status'], self.res['status'])
         assert_equal(res['msg'], self.res['msg'])

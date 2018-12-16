@@ -1,3 +1,4 @@
+import json
 import unittest
 import requests
 from base.base_action import get_url, get_res, get_meeting_id_with_create_fast_meeting, end_meeting, start_log, \
@@ -31,7 +32,8 @@ class TestGetAppointMeetingMsg(unittest.TestCase):
         logger.info(params_log + str(params))
         r = requests.post(self.url, params)
         res = r.json()
-        logger.info(res_log + str(res))
+        result = json.dumps(res, ensure_ascii=False)
+        logger.info(res_log + result)
         assert_equal(r.status_code, 200)
         assert_equal(res['status'], self.res['status'])
         assert_equal(res['msg'], self.res['msg'])

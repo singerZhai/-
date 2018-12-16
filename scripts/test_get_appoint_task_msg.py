@@ -1,3 +1,4 @@
+import json
 import unittest
 import requests
 
@@ -33,7 +34,8 @@ class TestGetAppointTaskMsg(unittest.TestCase):
         logger.info('获取taskId')
         r = requests.post(self.url, taskId)
         res = r.json()
-        logger.info(res_log + str(res))
+        result = json.dumps(res, ensure_ascii=False)
+        logger.info(res_log + result)
         assert_equal(r.status_code, 200)
         assert_equal(res['status'], self.res['status'])
         assert_equal(res['msg'], self.res['msg'])

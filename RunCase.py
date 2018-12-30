@@ -1,7 +1,6 @@
 import shutil
 import unittest
 from threading import Thread
-
 from Email import SendMail
 from HTMLTestReportCN import HTMLTestRunner
 import time
@@ -10,11 +9,12 @@ import os
 
 path = os.path.dirname(os.path.realpath(__file__))
 Report_path = os.path.join(path, 'Report')
-files_count = len(os.listdir(Report_path))
+
 # 如果没有Report目录，创建
 if not os.path.exists(Report_path):
     os.mkdir(Report_path)
 
+files_count = len(os.listdir(Report_path))
 if files_count > 10:
     # 如果report数量大于10条，清空目录
     shutil.rmtree(Report_path)
@@ -23,7 +23,7 @@ if files_count > 10:
 
 if __name__ == '__main__':
     case_path = './scripts/'
-    discover = unittest.defaultTestLoader.discover(case_path, pattern='test_reset_unread_count_group_chat.py')
+    discover = unittest.defaultTestLoader.discover(case_path, pattern='test_login.py')
     # 报告生成路径
     # Report/路径必须提前创建，否则报错
     report_path = './Report/'

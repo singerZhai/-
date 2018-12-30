@@ -29,17 +29,6 @@ def get_res(file, urls, res):
         return result[urls][res]
 
 
-def load_image_PIL(filename):
-    # 读取图片方法
-    import os
-    from PIL import Image
-    isExit = os.path.isfile(filename)
-    if isExit is False:
-        print("打开失败!")
-    img = Image.open(filename)
-    return img
-
-
 def change_back_password_params():
     with open('./data/data.yml', encoding='utf-8') as f:
         result = yaml.load(f)
@@ -361,8 +350,13 @@ def select_sql(sql):
         # 执行sql
         f.execute(sql)
         # 获取数据
-        result = f.fetchone()
+        result = f.fetchall()
         return result
+
+
+def insert_sql(sql):
+    with OpenDB() as f:
+        f.execute(sql)
 
 
 if __name__ == '__main__':
@@ -383,5 +377,3 @@ if __name__ == '__main__':
     sql = "select name,price from goods order by price desc limit 1"
     res = select_sql(sql)
     print(res)
-    img = load_image_PIL('../data/photo.jpg')
-    print(img)

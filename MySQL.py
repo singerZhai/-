@@ -2,7 +2,7 @@ from pymysql import connect, cursors
 
 
 class OpenDB:
-    def __init__(self, host='127.0.0.1', user='root', password='123456', database='students', charset='utf8'):
+    def __init__(self, host='127.0.0.1', user='root', password='123456', database='user_data', charset='utf8'):
         # 初始化
         try:
             self.conn = connect(host=host,

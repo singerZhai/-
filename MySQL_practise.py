@@ -1,5 +1,3 @@
-from MySQL import OpenDB
-import time
 from base.base_action import select_sql, insert_sql
 
 
@@ -45,10 +43,3 @@ def login_sign_in():
 
 
 login_sign_in()
-
-
-# demo = ['xiaoming', 'xiaohong', 'xiaogang']
-# demo_data = demo[demo.index('xiaohong') + 1]
-# print(demo_data)
-
-# print(len('xiaoming'))

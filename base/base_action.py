@@ -374,6 +374,6 @@ if __name__ == '__main__':
     # print(get_appoint_meeting_msg())
     # print(get_meeting_id_with_create_fast_meeting())
     # print(get_date())
-    sql = "select name,price from goods order by price desc limit 1"
+    sql = "select username,password from user where username='lidabao'"
     res = select_sql(sql)
     print(res)

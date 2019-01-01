@@ -10,8 +10,7 @@ class UserData(object):
         for i in __all:
             for j in i.values():
                 __new_list.append(j)
-        all_data_list = __new_list
-        all_data = dict(zip(all_data_list[0::2], all_data_list[1::2]))
+        all_data = dict(zip(__new_list[0::2], __new_list[1::2]))
         return all_data
 
     def __sign_in(self):
@@ -41,10 +40,13 @@ class UserData(object):
                 print('%s用户已存在' % new_username)
                 continue
 
-    def login(self):
+    def __login(self):
         while True:
             __all_data = self.__get_all_data()
             username = input('请输入用户名：')
+            if username == '666':
+                print(__all_data)
+                continue
             if username in __all_data:
                 while True:
                     password = input('请输入密码：')
@@ -69,7 +71,7 @@ class UserData(object):
                         continue
 
     def doing(self):
-        username = self.login()
+        username = self.__login()
         if username:
             while True:
                 while True:

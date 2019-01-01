@@ -130,7 +130,7 @@ from time import sleep
 # print(a)
 import requests
 
-from base.base_action import get_url, get_params
+from base.base_action import get_url, get_params, select_sql
 
 # login_url = get_url('data', 'login', 'url')
 # login_params = get_params('data', 'login', 'params')
@@ -145,3 +145,40 @@ from base.base_action import get_url, get_params
 # print(type(res))
 # result = json.dumps(res, ensure_ascii=False)
 # print(result)
+
+
+# user_data = select_sql("select username,password from user")
+# print(user_data)
+# user_dict = dict()
+# for i in user_data:
+#     for j in i.values():
+#         print(j)
+#         user_dict[j] = j
+# print(user_dict)
+
+
+demo = {'username': 'admin', 'password': 'admin123', }
+new_list = list()
+for i in demo.values():
+    new_list.append(i)
+# print(new_list)
+
+# new_dict = dict(zip(new_list[0::2], new_list[1::2]))
+# print(new_dict)
+
+# print(new_list[0::2])
+# print(new_list[1::2])
+demo_list = ['admin', 'admin', 'xiaozhai', 'xiaozhai123', 'xiaoying', 'xiaoying123']
+# a = demo_list[0::2]
+# b = demo_list[1::2]
+# print(a)
+# print(b)
+# print('使用zip函数')
+# newest_list = zip(a, b)
+# print(newest_list)
+# print(dict(newest_list))
+
+new_dict = dict()
+for i in range(0, len(demo_list), 2):
+    new_dict[demo_list[i]] = demo_list[i + 1]
+print(new_dict)

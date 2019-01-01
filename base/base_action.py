@@ -359,6 +359,16 @@ def insert_sql(sql):
         f.execute(sql)
 
 
+def update_sql(sql):
+    with OpenDB() as f:
+        f.execute(sql)
+
+
+def delete_sql(sql):
+    with OpenDB() as f:
+        f.execute(sql)
+
+
 if __name__ == '__main__':
     # print(get_url('data', 'login', 'url'))
     # print(get_params('data', 'login', 'params'))

@@ -23,7 +23,7 @@ if files_count > 10:
 
 if __name__ == '__main__':
     case_path = './scripts/'
-    discover = unittest.defaultTestLoader.discover(case_path, pattern='test_login.py')
+    discover = unittest.defaultTestLoader.discover(case_path, pattern='test_*.py')
     # 报告生成路径
     # Report/路径必须提前创建，否则报错
     report_path = './Report/'

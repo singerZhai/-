@@ -46,9 +46,9 @@
 # print(type(time.time()))
 # print(runtime)
 # !/usr/bin/python3
-import json
-import threading
-import time
+# import json
+# import threading
+# import time
 #
 # exitFlag = 0
 #
@@ -157,10 +157,10 @@ from base.base_action import get_url, get_params, select_sql
 # print(user_dict)
 
 
-demo = {'username': 'admin', 'password': 'admin123', }
-new_list = list()
-for i in demo.values():
-    new_list.append(i)
+# demo = {'username': 'admin', 'password': 'admin123', }
+# new_list = list()
+# for i in demo.values():
+#     new_list.append(i)
 # print(new_list)
 
 # new_dict = dict(zip(new_list[0::2], new_list[1::2]))
@@ -168,7 +168,7 @@ for i in demo.values():
 
 # print(new_list[0::2])
 # print(new_list[1::2])
-demo_list = ['admin', 'admin', 'xiaozhai', 'xiaozhai123', 'xiaoying', 'xiaoying123']
+# demo_list = ['admin', 'admin', 'xiaozhai', 'xiaozhai123', 'xiaoying', 'xiaoying123']
 # a = demo_list[0::2]
 # b = demo_list[1::2]
 # print(a)
@@ -178,7 +178,18 @@ demo_list = ['admin', 'admin', 'xiaozhai', 'xiaozhai123', 'xiaoying', 'xiaoying1
 # print(newest_list)
 # print(dict(newest_list))
 
-new_dict = dict()
-for i in range(0, len(demo_list), 2):
-    new_dict[demo_list[i]] = demo_list[i + 1]
-print(new_dict)
+# new_dict = dict()
+# for i in range(0, len(demo_list), 2):
+#     new_dict[demo_list[i]] = demo_list[i + 1]
+# print(new_dict)
+
+
+# import requests
+#
+#
+# data = {"username": "15611066631", "password": "123456"}
+# url = 'http://www.dingchengvideo.cn:8080/idcvideo-meeting/user/login.do'
+# s = requests.Session()
+# response = s.post(url=url, data=data)
+# # print(response.json())
+# print(response.request.headers)

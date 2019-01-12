@@ -376,18 +376,26 @@ def delete_sql(sql):
 
 
 # 生成随机字符串作为创建团队的name
-def get_random_str(str_length=16):
+def get_random_str(str_length=10):
     str_list = [random.choice(string.digits + string.ascii_letters) for i in range(str_length)]
     random_str = ''.join(str_list)
     return random_str
 
 
-# 调用上面生成随机字符串来添加到字典中,便于当成参数传递给接口
+# 调用上面生成随机字符串来添加到字典中,生成teamName参数
 def random_team_name():
     team_name = dict()
     random_str = get_random_str()
     team_name['teamName'] = random_str + '(接口测试脚本生成的团队)'
     return team_name
+
+
+# 调用上面的生成随机字符串方法来添加到字典中,生成Udid参数
+def random_Udid():
+    Udid_dict = dict()
+    random_str = get_random_str()
+    Udid_dict['Udid'] = random_str
+    return Udid_dict
 
 
 # 获取用户的团队列表
@@ -441,6 +449,21 @@ def add_team_member(teamId):
     userToken = get_token()
     new_params = dict(userToken, **teamId, **params)
     requests.post(url=url, data=new_params)
+
+
+# 创建订单并返回orderId
+def create_times_order_and_return_orderId():
+    orderId_dict = dict()
+    url = get_url('data', 'create_times_order_by_productId', 'url')
+    params = get_params('data', 'create_times_order_by_productId', 'params')
+    userToken = get_token()
+    new_params = dict(userToken, **params)
+    r = requests.post(url=url, data=new_params)
+    res = r.json()
+    orderId = res['data']['order']['orderId']
+    orderId_dict['orderId'] = orderId
+    return orderId_dict
+
 
 
 if __name__ == '__main__':

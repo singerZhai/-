@@ -428,3 +428,81 @@ select_meeting_room_list:
   res:
     status: 200
     msg: '请求成功'
+send_code:
+  url: '/idcvideo-meeting/sms/sendCode.do'
+  params:
+    tel: '15611066631'
+  res:
+    status: 200
+    msg: '验证码发送成功'
+circular_notice:
+  url: '/idcvideo-meeting/video/meeting/circularNotice.do'
+  params:
+    data: ""
+  res:
+    status: 200
+    msg: '请求成功'
+product_rate_detail:
+  url: '/idcvideo-meeting/productRate/productRateDetail.do'
+  params:
+    type: 2
+  res:
+    status: 200
+    msg: '请求成功'
+product_list:
+  url: '/idcvideo-meeting/product/productList.do'
+  params:
+    platformType: 0
+  res:
+    status: 200
+    msg: '请求成功'
+calculate_add_seat_year:
+  url: '/idcvideo-meeting/product/calculateAddSeatYear.do'
+  res:
+    status: 200
+    msg: '请求成功'
+calculate_seat_total_price:
+  url: '/idcvideo-meeting/product/calculateSeatTotalPrice.do'
+  params:
+    seatNum: 16
+    years: 10
+  res:
+    status: 200
+    msg: '请求成功'
+calculate_times_total_price:
+  url: '/idcvideo-meeting/product/calculateTimesTotalPrice.do'
+  params:
+    times: 2300
+  res:
+    status: 200
+    msg: '请求成功'
+create_seat_order:
+  url: '/idcvideo-meeting/order/createSeatOrder.do'
+  params:
+    seatNum: 8
+    seatBuyType: 1
+    source: 4
+  res:
+    status: 200
+    msg: '请求成功'
+create_times_order:
+  url: '/idcvideo-meeting/order/createTimesOrder.do'
+  params:
+    times: 1000
+    source: 4
+  res:
+    status: 200
+    msg: '请求成功'
+create_times_order_by_productId:
+  url: '/idcvideo-meeting/order/createTimesOrderByProductId.do'
+  params:
+    productId: 3
+    source: 4
+  res:
+    status: 200
+    msg: '请求成功'
+select_order_detail:
+  url: '/idcvideo-meeting/order/selectOrderDetail.do'
+  res:
+    status: 200
+    msg: '请求成功'

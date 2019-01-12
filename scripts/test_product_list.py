@@ -1,16 +1,16 @@
-import json
 import unittest
 import requests
-from base.base_action import get_url, get_params, get_res, start_log, params_log, res_log, end_log, now_time, runtime, \
-    assert_equal, random_Udid
+import json
+from base.base_action import get_url, get_params, get_res, now_time, start_log, runtime, end_log, get_token, params_log, \
+    res_log, assert_equal
 from base.logger import Log
 
 
-class TestSignInDeviceUser(unittest.TestCase):
+class TestProductList(unittest.TestCase):
 
-    url = get_url('data', 'sign_in_device_user', 'url')
-    params = get_params('data', 'sign_in_device_user', 'params')
-    res = get_res('data', 'sign_in_device_user', 'res')
+    url = get_url('data', 'product_list', 'url')
+    params = get_params('data', 'product_list', 'params')
+    res = get_res('data', 'product_list', 'res')
 
     def setUp(self):
         global logger
@@ -18,18 +18,17 @@ class TestSignInDeviceUser(unittest.TestCase):
         global start_time
         start_time = now_time()
         logger.warning(start_log)
-        logger.info('注册设备用户接口')
+        logger.info('产品列表接口')
 
     def tearDown(self):
         run_time = runtime(start_time)
         logger.warning(run_time)
         logger.warning(end_log)
 
-    # @unittest.skipIf(condition=True, reason='deviceUdid')
-    def test_sign_in_device_user(self):
-        u"""注册设备用户接口"""
-        Udid = random_Udid()
-        new_params = dict(Udid, **self.params)
+    def test_product_list(self):
+        u"""产品列表接口"""
+        userToken = get_token()
+        new_params = dict(userToken, **self.params)
         logger.info(params_log + str(new_params))
         r = requests.post(url=self.url, data=new_params)
         res = r.json()

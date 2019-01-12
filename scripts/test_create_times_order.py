@@ -1,16 +1,16 @@
-import json
 import unittest
 import requests
-from base.base_action import get_url, get_params, get_res, start_log, params_log, res_log, end_log, now_time, runtime, \
-    assert_equal, random_Udid
+import json
+from base.base_action import get_url, get_params, get_res, now_time, start_log, runtime, end_log, get_team_id, \
+    get_token, params_log, res_log, assert_equal
 from base.logger import Log
 
 
-class TestSignInDeviceUser(unittest.TestCase):
+class TestCreateTimesOrder(unittest.TestCase):
 
-    url = get_url('data', 'sign_in_device_user', 'url')
-    params = get_params('data', 'sign_in_device_user', 'params')
-    res = get_res('data', 'sign_in_device_user', 'res')
+    url = get_url('data', 'create_times_order', 'url')
+    params = get_params('data', 'create_times_order', 'params')
+    res = get_res('data', 'create_times_order', 'res')
 
     def setUp(self):
         global logger
@@ -18,18 +18,18 @@ class TestSignInDeviceUser(unittest.TestCase):
         global start_time
         start_time = now_time()
         logger.warning(start_log)
-        logger.info('注册设备用户接口')
+        logger.info('创建购买时长的接口（根据用户时长）')
 
     def tearDown(self):
         run_time = runtime(start_time)
         logger.warning(run_time)
         logger.warning(end_log)
 
-    # @unittest.skipIf(condition=True, reason='deviceUdid')
-    def test_sign_in_device_user(self):
-        u"""注册设备用户接口"""
-        Udid = random_Udid()
-        new_params = dict(Udid, **self.params)
+    def test_create_times_order(self):
+        u"""创建购买时长的接口（根据用户时长）"""
+        teamId = get_team_id()
+        userToken = get_token()
+        new_params = dict(userToken, **teamId, **self.params)
         logger.info(params_log + str(new_params))
         r = requests.post(url=self.url, data=new_params)
         res = r.json()

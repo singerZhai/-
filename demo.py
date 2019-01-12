@@ -193,14 +193,50 @@ from base.base_action import get_url, get_params, select_sql
 # response = s.post(url=url, data=data)
 # # print(response.json())
 # print(response.request.headers)
-import random
-import string
+# import random
+# import string
+#
+#
+# def generate_random_str(str_length=16):
+#     str_list = [random.choice(string.digits + string.ascii_letters) for i in range(str_length)]
+#     random_str = ''.join(str_list)
+#     return random_str
+#
+#
+# print(generate_random_str(10))
 
 
-def generate_random_str(str_length=16):
-    str_list = [random.choice(string.digits + string.ascii_letters) for i in range(str_length)]
-    random_str = ''.join(str_list)
-    return random_str
+import unittest
+import requests
+import json
+from base.base_action import get_url, get_params, get_res, get_team_id, get_token, now_time, start_log, runtime, \
+    end_log, params_log, res_log, assert_equal
+from base.logger import Log
 
 
-print(generate_random_str(10))
+# url = get_url('data', 'create_seat_order', 'url')
+# params = get_params('data', 'create_seat_order', 'params')
+# res = get_res('data', 'create_seat_order', 'res')
+#
+#
+#
+# u"""创建购买席位订单的接口"""
+# teamId = get_team_id()
+# userToken = get_token()
+# new_params = dict(userToken, **teamId, **params)
+# print(new_params)
+# r = requests.post(url=url, data=new_params)
+# print(r.text)
+# res = r.json()
+# result = json.dumps(res, ensure_ascii=False)
+# assert_equal(r.status_code, 200)
+# assert_equal(res['status'], res['status'])
+# assert_equal(res['msg'], res['msg'])
+
+r = requests.post(url='http://www.dingchengvideo.cn:8080/QRCode/20190112/ed0cc5a0-564c-478c-a2f1-7452adc35700.jpg')
+print(r.status_code)
+with open('tupian.jpg', 'wb') as f:
+    # for data in f.iter_content(128):
+        # 把流写入到文件，这个文件最后写入完成就是，selenium.png
+        f.write(r.content)  # data相当于一块一块数据写入到我们的图片文件中
+print(f)

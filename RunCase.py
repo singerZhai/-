@@ -34,7 +34,7 @@ if __name__ == '__main__':
     # 打开并写入报告
     with open(report_name, 'wb') as f:
         # 初始化报告生成对象
-        runner = HTMLTestRunner(stream=f, verbosity=2, title='接口测试报告', description='业务接口测试脚本', tester='Mr.Zhai')
+        runner = HTMLTestRunner(stream=f, verbosity=2, title='业务服务器接口测试报告', description='接口测试脚本', tester='测试-翟会德')
         f = Thread(target=runner.run, args=(discover,))
         f.start()
         f.join()

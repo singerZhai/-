@@ -9,7 +9,6 @@ from base.logger import Log
 class TestLogoutDeviceUser(unittest.TestCase):
 
     url = get_url('data', 'logout_device_user', 'url')
-    params = get_user_id()
     res = get_res('data', 'logout_device_user', 'res')
 
     def setUp(self):
@@ -25,14 +24,16 @@ class TestLogoutDeviceUser(unittest.TestCase):
         logger.warning(run_time)
         logger.warning(end_log)
 
+    @unittest.skipIf(condition=True, reason='更改')
     def test_logout_device_user(self):
         u"""注销设备用户接口"""
-        logger.info(params_log + str(self.params))
-        requests.post(self.url, self.params)
-        r = requests.post(self.url, self.params)
+        params = get_user_id()
+        logger.info(params_log + str(params))
+        requests.post(self.url, params)
+        r = requests.post(self.url, params)
         res = r.json()
         result = json.dumps(res, ensure_ascii=False)
-        logger.info(res_log + result)
+        logger.warning(res_log + result)
         assert_equal(r.status_code, 200)
         assert_equal(res['status'], self.res['status'])
         assert_equal(res['msg'], self.res['msg'])

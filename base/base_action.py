@@ -1,4 +1,6 @@
 import datetime
+import random
+import string
 import time
 import traceback
 from time import sleep
@@ -88,6 +90,7 @@ def sign_in_device_user():
     return res['data']['deviceUser']['userid']
 
 
+# 待修改
 def get_user_id():
     userid = sign_in_device_user()
     demo = dict()
@@ -324,6 +327,7 @@ def now_time():
     return result
 
 
+# 脚本运行时长
 def runtime(start_time):
     end_time = time.time()
     result = end_time - start_time
@@ -331,6 +335,8 @@ def runtime(start_time):
     return runtime_log + str(res) + 's'
 
 
+# 二次封装断言方法
+# 加入log
 def assert_equal(result, expect):
     try:
         assert str(result) == str(expect)
@@ -369,6 +375,74 @@ def delete_sql(sql):
         f.execute(sql)
 
 
+# 生成随机字符串作为创建团队的name
+def get_random_str(str_length=16):
+    str_list = [random.choice(string.digits + string.ascii_letters) for i in range(str_length)]
+    random_str = ''.join(str_list)
+    return random_str
+
+
+# 调用上面生成随机字符串来添加到字典中,便于当成参数传递给接口
+def random_team_name():
+    team_name = dict()
+    random_str = get_random_str()
+    team_name['teamName'] = random_str + '(接口测试脚本生成的团队)'
+    return team_name
+
+
+# 获取用户的团队列表
+def get_team_list():
+    url = get_url('data', 'select_team_and_team_member_list', 'url')
+    userToken = get_token()
+    r = requests.post(url=url, data=userToken)
+    res = r.json()
+    result = res['data']['teamList']
+    return result
+
+
+# 获取当前用户的最后一个团队的teamId
+# (因为每一个新创建的团队都是在团队列表的最后一个,固返回最后一团队的teamId)
+def get_team_id():
+    teamId_dict = dict()
+    team_list = get_team_list()
+    teamId_dict['teamId'] = team_list[-1]['teamId']
+    return teamId_dict
+
+
+# 利用查询团队列表返回的数据提取成员Id
+# 同样为最后一个团队中的成员id
+def get_id():
+    id_dict = dict()
+    team_list = get_team_list()
+    id_dict['id'] = team_list[-1]['teamMemberList'][-1]['id']
+    return id_dict
+
+
+# 创建团队方法
+def create_team():
+    url = get_url('data', 'create_team', 'url')
+    params = get_params('data', 'create_team', 'params')
+    team_name = random_team_name()
+    userToken = get_token()
+    new_params = dict(userToken, **team_name, **params)
+    requests.post(url=url, data=new_params)
+
+
+# 删除团队方法
+def delete_team(teamId):
+    url = get_url('data', 'markup_delete_team', 'url')
+    requests.post(url=url, data=teamId)
+
+
+# 添加团队成员方法(供删除删除团队成员接口调用)
+def add_team_member(teamId):
+    url = get_url('data', 'add_team_member', 'url')
+    params = get_params('data', 'add_team_member', 'params')
+    userToken = get_token()
+    new_params = dict(userToken, **teamId, **params)
+    requests.post(url=url, data=new_params)
+
+
 if __name__ == '__main__':
     # print(get_url('data', 'login', 'url'))
     # print(get_params('data', 'login', 'params'))
@@ -384,6 +458,11 @@ if __name__ == '__main__':
     # print(get_appoint_meeting_msg())
     # print(get_meeting_id_with_create_fast_meeting())
     # print(get_date())
-    sql = "select username,password from user where username='lidabao'"
-    res = select_sql(sql)
-    print(res)
+    # sql = "select username,password from user where username='lidabao'"
+    # res = select_sql(sql)
+    # print(res)
+    # print(get_random_str())
+    # print(random_team_name())
+    # print(get_team_list())
+    # print(get_team_id())
+    print(get_id())

@@ -106,7 +106,7 @@ create_fast_meeting:
     enterUsernames: '15611066631,13987654321'
   res:
     status: 200
-    msg: '创建预约会议成功'
+    msg: '创建快速会议成功'
 meeting_status_search_with_me:
   url: '/idcvideo-meeting/meeting/selectByStatus.do'
   params:
@@ -302,6 +302,129 @@ reset_unread_count_group_chat:
   url: '/idcvideo-meeting/conversation/resetUnreadCountGroupChat.do'
   params:
     fromUsername: '15611066631'
+  res:
+    status: 200
+    msg: '请求成功'
+leave_message:
+  url: '/idcvideo-meeting/leavemessage/leavemessage.do'
+  params:
+    message: '好开会智能会议平板(接口测试数据)'
+  res:
+    status: 200
+    msg: '请求成功'
+apply:
+  url: '/idcvideo-meeting/applicationApply/apply.do'
+  params:
+    companyName: '鼎城福瑞'
+    applicantName: '翟会德'
+    applicantTel: '13666666666'
+  res:
+    status: 200
+    msg: '请求成功'
+select_app_version:
+  url: '/idcvideo-meeting/appVersion/selectAppVersion.do'
+  params:
+    type: 4
+    bundleIdentifier: 'com.idcvideo.haokaihui'
+  res:
+    status: 200
+    msg: '请求成功'
+create_team:
+  url: '/idcvideo-meeting/team/createTeam.do'
+  params:
+    companyName: '鼎城福瑞'
+    companyAddress: '西二旗'
+  res:
+    status: 200
+    msg: '请求成功'
+select_team_list:
+  url: '/idcvideo-meeting/team/selectTeamList.do'
+  res:
+    status: 200
+    msg: '请求成功'
+edit_team:
+  url: '/idcvideo-meeting/team/editTeam.do'
+  res:
+    status: 200
+    msg: '请求成功'
+markup_delete_team:
+  url: '/idcvideo-meeting/team/markupDeleteTeam.do'
+  res:
+    status: 200
+    msg: '请求成功'
+select_team_detail:
+  url: '/idcvideo-meeting/team/selectTeamDetail.do'
+  res:
+    status: 200
+    msg: '请求成功'
+select_team_and_team_member_list:
+  url: '/idcvideo-meeting/team/selectTeamAndTeamMemberList.do'
+  res:
+    status: 200
+    msg: '请求成功'
+add_admin:
+  url: '/idcvideo-meeting/teamMember/addAdmin.do'
+  params:
+    username: '18888888888'
+    nickname: '还有谁'
+  res:
+    status: 200
+    msg: '请求成功'
+add_team_member:
+  url: '/idcvideo-meeting/teamMember/addTeamMember.do'
+  params:
+    username: '13666666666'
+  res:
+    status: 200
+    msg: '请求成功'
+add_team_member_by_betch:
+  url: '/idcvideo-meeting/teamMember/addTeamMemberByBetch.do'
+  params:
+    teamMembers: "[{'username': '13888888888'}, {'username': '13999999999'}, {'username': '18000000000'}]"
+  res:
+    status: 200
+    msg: '请求成功'
+edit_team_member:
+  url: '/idcvideo-meeting/teamMember/editTeamMember.do'
+  params:
+    username: '18000000000'
+    nickname: '编辑团队成员信息'
+  res:
+    status: 200
+    msg: '编辑成员信息成功'
+delete_team_member:
+  url: '/idcvideo-meeting/teamMember/deleteTeamMember.do'
+  params:
+    username: '13666666666'
+  res:
+    status: 200
+    msg: '请求成功'
+exit_team:
+  url: '/idcvideo-meeting/teamMember/exitTeam.do'
+  params:
+    username: '15611066631'
+  res:
+    status: 200
+    msg: '请求成功'
+select_team_member:
+  url: '/idcvideo-meeting/teamMember/selectTeamMember.do'
+  res:
+    status: 200
+    msg: '请求成功'
+setting_team_member_role:
+  url: '/idcvideo-meeting/teamMember/settingTeamMemberRole.do'
+  params:
+    username: '13666666666'
+    roleType: 2
+  res:
+    status: 200
+    msg: '请求成功'
+binding_admin:
+  url: '/idcvideo-meeting/teamMember/bindingAdmin.do'
+untie_admin:
+  url: '/idcvideo-meeting/teamMember/untieAdmin.do'
+select_meeting_room_list:
+  url: '/idcvideo-meeting/meetingRoom/selectMeetingRoomList.do'
   res:
     status: 200
     msg: '请求成功'

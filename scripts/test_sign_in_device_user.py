@@ -25,13 +25,14 @@ class TestSignInDeviceUser(unittest.TestCase):
         logger.warning(run_time)
         logger.warning(end_log)
 
+    @unittest.skipIf(condition=True, reason='deviceUdid')
     def test_sign_in_device_user(self):
         u"""注册设备用户接口"""
         logger.info(params_log + str(self.params))
         r = requests.post(self.url, self.params)
         res = r.json()
         result = json.dumps(res, ensure_ascii=False)
-        logger.info(res_log + result)
+        logger.warning(res_log + result)
         assert_equal(r.status_code, 200)
         assert_equal(res['status'], self.res['status'])
         assert_equal(res['msg'], self.res['msg'])

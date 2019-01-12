@@ -193,3 +193,14 @@ from base.base_action import get_url, get_params, select_sql
 # response = s.post(url=url, data=data)
 # # print(response.json())
 # print(response.request.headers)
+import random
+import string
+
+
+def generate_random_str(str_length=16):
+    str_list = [random.choice(string.digits + string.ascii_letters) for i in range(str_length)]
+    random_str = ''.join(str_list)
+    return random_str
+
+
+print(generate_random_str(10))

@@ -31,7 +31,7 @@ class TestSelectTaskModifyRecords(unittest.TestCase):
         r = requests.post(self.url, taskId)
         res = r.json()
         result = json.dumps(res, ensure_ascii=False)
-        logger.info(res_log + result)
+        logger.warning(res_log + result)
         assert_equal(r.status_code, 200)
         assert_equal(res['status'], self.res['status'])
         assert_equal(res['msg'], self.res['msg'])

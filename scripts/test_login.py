@@ -34,7 +34,7 @@ class TestLogin(unittest.TestCase):
         r = requests.post(self.login_url, self.login_params)
         res = r.json()
         result = json.dumps(res, ensure_ascii=False)
-        logger.info(res_log + result)
+        logger.warning(res_log + result)
         assert_equal(r.status_code, 200)
         assert_equal(res['status'], self.login_res['status'])
         assert_equal(res['msg'], self.login_res['msg'])

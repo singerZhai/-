@@ -25,13 +25,14 @@ class TestTabletUserFastLogin(unittest.TestCase):
         logger.warning(run_time)
         logger.warning(end_log)
 
+    @unittest.skipIf(condition=True, reason='deviceUdid')
     def test_tablet_user_fast_login(self):
         u"""平板用户快速登录接口"""
         logger.info(params_log + str(self.params))
         r = requests.post(self.url, self.params)
         res = r.json()
         result = json.dumps(res, ensure_ascii=False)
-        logger.info(res_log + result)
+        logger.warning(res_log + result)
         assert_equal(r.status_code, 200)
         assert_equal(res['status'], self.res['status'])
         assert_equal(res['msg'], self.res['msg'])

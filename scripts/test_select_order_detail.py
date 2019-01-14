@@ -27,7 +27,7 @@ class TestSelectOrderDetail(unittest.TestCase):
     def test_select_order_detail(self):
         u"""查询订单详情接口"""
         orderId = create_times_order_and_return_orderId()
-        logger.info(params_log + str(orderId))
+        logger.warning(params_log + str(orderId))
         r = requests.post(url=self.url, data=orderId)
         res = r.json()
         result = json.dumps(res, ensure_ascii=False)

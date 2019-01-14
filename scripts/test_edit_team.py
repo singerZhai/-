@@ -30,7 +30,7 @@ class TestEditTeam(unittest.TestCase):
         teamId = get_team_id()
         team_name = random_team_name()
         new_params = dict(teamId, **team_name)
-        logger.info(params_log + str(new_params))
+        logger.warning(params_log + str(new_params))
         r = requests.post(url=self.url, data=new_params)
         res = r.json()
         result = json.dumps(res, ensure_ascii=False)

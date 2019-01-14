@@ -31,7 +31,7 @@ class TestSelectTaskICreate(unittest.TestCase):
         userToken = get_token()
         logger.info('获取token')
         new_params = dict(userToken, **self.params)
-        logger.info(params_log + str(new_params))
+        logger.warning(params_log + str(new_params))
         r = requests.post(self.url, new_params)
         res = r.json()
         result = json.dumps(res, ensure_ascii=False)

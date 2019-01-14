@@ -27,7 +27,7 @@ class TestCalculateSeatTotalPrice(unittest.TestCase):
 
     def test_calculate_seat_total_price(self):
         u"""席位总价计算接口"""
-        logger.info(params_log + str(self.params))
+        logger.warning(params_log + str(self.params))
         r = requests.post(url=self.url, data=self.params)
         res = r.json()
         result = json.dumps(res, ensure_ascii=False)

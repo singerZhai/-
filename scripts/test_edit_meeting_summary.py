@@ -35,7 +35,7 @@ class TestEditMeetingSummary(unittest.TestCase):
         meetingId_dict = get_meetingid_with_get_appoint_meeting_msg(appoint_meeting_msg)
         logger.info('获取meetingId')
         params = dict(meetingId_dict, **self.params_summary_text, **summaryId_dict)
-        logger.info(params_log + str(params))
+        logger.warning(params_log + str(params))
         r = requests.post(self.url, params)
         res = r.json()
         result = json.dumps(res, ensure_ascii=False)

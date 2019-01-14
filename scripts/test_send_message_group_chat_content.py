@@ -35,7 +35,7 @@ class TestSendMessageGroupChatContent(unittest.TestCase):
         taskId = get_first_task_id_by_task_list(task_list_msg)
         logger.info('获取taskId')
         new_params = dict(groupId, **self.params)
-        logger.info(params_log + str(new_params))
+        logger.warning(params_log + str(new_params))
         r = requests.post(self.url, new_params)
         res = r.json()
         result = json.dumps(res, ensure_ascii=False)

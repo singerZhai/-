@@ -27,7 +27,7 @@ class TestSelectAppVersion(unittest.TestCase):
 
     def test_select_app_version(self):
         u"""APP版本管理接口"""
-        logger.info(params_log + str(self.params))
+        logger.warning(params_log + str(self.params))
         r = requests.post(url=self.url, data=self.params)
         res = r.json()
         result = json.dumps(res, ensure_ascii=False)

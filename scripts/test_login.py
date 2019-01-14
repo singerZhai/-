@@ -30,7 +30,7 @@ class TestLogin(unittest.TestCase):
 
     def test_login(self):
         u"""用户登录接口"""
-        logger.info(params_log + str(self.login_params))
+        logger.warning(params_log + str(self.login_params))
         r = requests.post(self.login_url, self.login_params)
         res = r.json()
         result = json.dumps(res, ensure_ascii=False)

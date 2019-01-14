@@ -29,7 +29,7 @@ class TestGetAppointMeetingMsg(unittest.TestCase):
         meetingId_dict = dict()
         params = get_meeting_id_with_create_fast_meeting()
         logger.info('创建快速会议并获取meetingId')
-        logger.info(params_log + str(params))
+        logger.warning(params_log + str(params))
         r = requests.post(self.url, params)
         res = r.json()
         result = json.dumps(res, ensure_ascii=False)

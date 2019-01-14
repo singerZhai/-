@@ -26,7 +26,7 @@ class TestTaskInterfaceSearchNeedRelevanceMeeting(unittest.TestCase):
     def test_task_interface_search_need_relevance_meeting(self):
         u"""任务界面查询需要关联的会议接口"""
         params = get_token()
-        logger.info(params_log + str(params))
+        logger.warning(params_log + str(params))
         r = requests.post(self.url, params)
         res = r.json()
         result = json.dumps(res, ensure_ascii=False)

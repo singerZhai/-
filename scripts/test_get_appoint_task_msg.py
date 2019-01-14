@@ -4,7 +4,7 @@ import requests
 
 from base.base_action import get_url, get_res, select_task_list_and_meetingId_by_create_task, \
     get_first_task_id_by_task_list, delete_by_taskId, end_meeting, start_log, res_log, end_log, now_time, runtime, \
-    assert_equal
+    assert_equal, params_log
 from base.logger import Log
 
 
@@ -32,6 +32,7 @@ class TestGetAppointTaskMsg(unittest.TestCase):
         logger.info('在会议中创建任务并获取任务列表和meetingId')
         taskId = get_first_task_id_by_task_list(task_list)
         logger.info('获取taskId')
+        logger.warning(params_log + str(taskId))
         r = requests.post(self.url, taskId)
         res = r.json()
         result = json.dumps(res, ensure_ascii=False)

@@ -27,7 +27,7 @@ class TestSelectConversation(unittest.TestCase):
 
     def test_select_conversation(self):
         u"""会话查询接口"""
-        logger.info(params_log + str(self.params))
+        logger.warning(params_log + str(self.params))
         r = requests.post(self.url, data=self.params)
         res = r.json()
         result = json.dumps(res, ensure_ascii=False)

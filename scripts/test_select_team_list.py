@@ -27,7 +27,7 @@ class TestSelectTeamList(unittest.TestCase):
     def test_select_team_list(self):
         u"""查询用户团队列表接口"""
         userToken = get_token()
-        logger.info(params_log + str(userToken))
+        logger.warning(params_log + str(userToken))
         r = requests.post(url=self.url, data=userToken)
         res = r.json()
         result = json.dumps(res, ensure_ascii=False)

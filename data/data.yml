@@ -67,22 +67,18 @@ compile_user_msg:
 sign_in_device_user:
   url: '/idcvideo-meeting/device/fastLogin.do'
   params:
-    deviceUdid: '666666'
     source: 5
   res:
     status: 200
     msg: '请求成功'
 logout_device_user:
   url: '/idcvideo-meeting/device/cancleDevice.do'
-  params:
-    userid: '利用注册设备用户返回的userid'
   res:
-    status: 0
-    msg: '当前账号已回收'
+    status: 200
+    msg: '请求成功'
 tablet_user_fast_login:
   url: '/idcvideo-meeting/tablet/fastLogin.do'
   params:
-    deviceUdid: '666666'
     source: 6
   res:
     status: 200

@@ -29,7 +29,7 @@ class TestCreateTimesOrderByProductId(unittest.TestCase):
         u"""创建购买时长的接口（根据产品id）"""
         userToken = get_token()
         new_params = dict(userToken, **self.params)
-        logger.info(params_log + str(new_params))
+        logger.warning(params_log + str(new_params))
         r = requests.post(url=self.url, data=new_params)
         res = r.json()
         result = json.dumps(res, ensure_ascii=False)

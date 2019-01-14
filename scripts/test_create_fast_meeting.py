@@ -31,7 +31,7 @@ class TestCreateFastMeeting(unittest.TestCase):
         user_token = get_token()
         logger.info('获取token')
         new_params = dict(self.params, **user_token)
-        logger.info(params_log + str(new_params))
+        logger.warning(params_log + str(new_params))
         r = requests.post(self.url, new_params)
         logger.info('创建快速会议')
         res = r.json()

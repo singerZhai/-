@@ -33,7 +33,7 @@ class TestAppointmentMeeting(unittest.TestCase):
         user_token = get_token()
         logger.info('获取token')
         new_params = dict(self.params, **self.preBeginTime, **self.preEndTime, **user_token)
-        logger.info(params_log + str(new_params))
+        logger.warning(params_log + str(new_params))
         r = requests.post(self.url, new_params)
         logger.info('进行接口请求')
         res = r.json()

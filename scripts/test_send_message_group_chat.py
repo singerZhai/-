@@ -32,9 +32,9 @@ class TestSendMessageGroupChat(unittest.TestCase):
         groupId = get_group_id_by_task_list(task_list_msg)
         logger.info('获取groupId')
         new_params = dict(groupId, **self.params)
-        logger.info(params_log + str(new_params))
         files = {'contentPic': open('./data/photo.jpg', 'rb')}
         logger.info('上传文件为: ./data/photo.jpg')
+        logger.warning(params_log + str(new_params))
         r = requests.post(self.url, params=new_params, files=files)
         res = r.json()
         result = json.dumps(res, ensure_ascii=False)

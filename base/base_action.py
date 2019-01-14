@@ -85,12 +85,14 @@ def again_change_password():
 def sign_in_device_user():
     url = get_url('data', 'sign_in_device_user', 'url')
     params = get_params('data', 'sign_in_device_user', 'params')
-    r = requests.post(url, params)
+    device_Udid = random_device_Udid()
+    new_params = dict(device_Udid, **params)
+    print(new_params)
+    r = requests.post(url, new_params)
     res = r.json()
     return res['data']['deviceUser']['userid']
 
 
-# 待修改
 def get_user_id():
     userid = sign_in_device_user()
     demo = dict()
@@ -376,7 +378,7 @@ def delete_sql(sql):
 
 
 # 生成随机字符串作为创建团队的name
-def get_random_str(str_length=10):
+def get_random_str(str_length=6):
     str_list = [random.choice(string.digits + string.ascii_letters) for i in range(str_length)]
     random_str = ''.join(str_list)
     return random_str
@@ -391,10 +393,10 @@ def random_team_name():
 
 
 # 调用上面的生成随机字符串方法来添加到字典中,生成Udid参数
-def random_Udid():
+def random_device_Udid():
     Udid_dict = dict()
     random_str = get_random_str()
-    Udid_dict['Udid'] = random_str
+    Udid_dict['deviceUdid'] = random_str
     return Udid_dict
 
 
@@ -474,7 +476,7 @@ if __name__ == '__main__':
     # print(change_back_password_params())
     # # 将密码更改回‘123456’
     # # again_change_password()
-    # print(sign_in_device_user())
+    print(sign_in_device_user())
     # print(get_user_id())
     # print(get_meeting_start_time())
     # print(get_meeting_end_time())
@@ -488,4 +490,4 @@ if __name__ == '__main__':
     # print(random_team_name())
     # print(get_team_list())
     # print(get_team_id())
-    print(get_id())
+    # print(get_id())

@@ -24,13 +24,11 @@ class TestLogoutDeviceUser(unittest.TestCase):
         logger.warning(run_time)
         logger.warning(end_log)
 
-    @unittest.skipIf(condition=True, reason='更改')
     def test_logout_device_user(self):
         u"""注销设备用户接口"""
-        params = get_user_id()
-        logger.info(params_log + str(params))
-        requests.post(self.url, params)
-        r = requests.post(self.url, params)
+        userid = get_user_id()
+        logger.warning(params_log + str(userid))
+        r = requests.post(self.url, userid)
         res = r.json()
         result = json.dumps(res, ensure_ascii=False)
         logger.warning(res_log + result)

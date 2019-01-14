@@ -28,7 +28,7 @@ class TestMarkupDeleteTeam(unittest.TestCase):
         u"""标记删除团队接口(回收团队会议室号)"""
         create_team()
         teamId = get_team_id()
-        logger.info(params_log + str(teamId))
+        logger.warning(params_log + str(teamId))
         r = requests.post(url=self.url, data=teamId)
         res = r.json()
         result = json.dumps(res, ensure_ascii=False)

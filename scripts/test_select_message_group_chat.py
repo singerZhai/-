@@ -30,7 +30,7 @@ class TestSelectMessageGroupChat(unittest.TestCase):
         meetingId, taskId, groupId = send_message_group_chat_content()
         logger.info('获取meetingId、taskId、groupId')
         new_params = dict(groupId, **self.params)
-        logger.info(params_log + str(new_params))
+        logger.warning(params_log + str(new_params))
         r = requests.post(self.url, new_params)
         res = r.json()
         result = json.dumps(res, ensure_ascii=False)

@@ -29,7 +29,7 @@ class TestCreateGroup(unittest.TestCase):
 
     def test_create_group(self):
         u"""创建群组接口"""
-        logger.info(params_log + str(self.params))
+        logger.warning(params_log + str(self.params))
         r = requests.post(self.url, data=self.params)
         logger.info('进行接口请求')
         res = r.json()

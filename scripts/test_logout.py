@@ -1,7 +1,8 @@
 import json
 import unittest
 import requests
-from base.base_action import get_url, get_res, get_token, start_log, res_log, end_log, now_time, runtime, assert_equal
+from base.base_action import get_url, get_res, get_token, start_log, res_log, end_log, now_time, runtime, assert_equal, \
+    params_log
 from base.logger import Log
 
 
@@ -26,6 +27,7 @@ class TestLogout(unittest.TestCase):
         u"""用户退出接口"""
         user_token = get_token()
         logger.info('获取token')
+        logger.warning(params_log + str(user_token))
         r = requests.post(self.url, user_token)
         res = r.json()
         result = json.dumps(res, ensure_ascii=False)

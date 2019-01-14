@@ -29,7 +29,7 @@ class TestProductList(unittest.TestCase):
         u"""产品列表接口"""
         userToken = get_token()
         new_params = dict(userToken, **self.params)
-        logger.info(params_log + str(new_params))
+        logger.warning(params_log + str(new_params))
         r = requests.post(url=self.url, data=new_params)
         res = r.json()
         result = json.dumps(res, ensure_ascii=False)

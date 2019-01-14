@@ -34,7 +34,7 @@ class TestResetUnreadCountGroupChat(unittest.TestCase):
         logger.info('获取groupId')
         taskId = get_first_task_id_by_task_list(task_list_msg)
         new_params = dict(self.params, **groupId)
-        logger.info(params_log + str(new_params))
+        logger.warning(params_log + str(new_params))
         r = requests.post(self.url, data=new_params)
         res = r.json()
         result = json.dumps(res, ensure_ascii=False)

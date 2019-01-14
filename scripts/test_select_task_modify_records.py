@@ -2,7 +2,7 @@ import json
 import unittest
 import requests
 from base.base_action import get_url, get_res, edit_appoint_task_msg, end_meeting, delete_by_taskId, start_log, res_log, \
-    end_log, now_time, runtime, assert_equal
+    end_log, now_time, runtime, assert_equal, params_log
 from base.logger import Log
 
 
@@ -28,6 +28,7 @@ class TestSelectTaskModifyRecords(unittest.TestCase):
         u"""任务变更记录查询接口"""
         taskId, meetingId = edit_appoint_task_msg()
         logger.info('获取taskId和meetingId')
+        logger.warning(params_log + str(taskId))
         r = requests.post(self.url, taskId)
         res = r.json()
         result = json.dumps(res, ensure_ascii=False)

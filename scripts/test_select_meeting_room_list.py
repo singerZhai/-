@@ -27,7 +27,7 @@ class TestSelectMeetingRoomList(unittest.TestCase):
     def test_select_meeting_room_list(self):
         u"""会议室查询接口"""
         userToken = get_token()
-        logger.info(params_log + str(userToken))
+        logger.warning(params_log + str(userToken))
         r = requests.post(url=self.url, data=userToken)
         res = r.json()
         result = json.dumps(res, ensure_ascii=False)

@@ -27,7 +27,7 @@ class TestSelectTeamDetail(unittest.TestCase):
     def test_select_team_detail(self):
         u"""查询团队详情接口"""
         teamId = get_team_id()
-        logger.info(params_log + str(teamId))
+        logger.warning(params_log + str(teamId))
         r = requests.post(url=self.url, data=teamId)
         res = r.json()
         result = json.dumps(res, ensure_ascii=False)

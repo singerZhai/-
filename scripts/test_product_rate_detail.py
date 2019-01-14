@@ -27,7 +27,7 @@ class TestProductRateDetail(unittest.TestCase):
 
     def test_product_rate_detail(self):
         u"""费率说明接口"""
-        logger.info(params_log + str(self.params))
+        logger.warning(params_log + str(self.params))
         r = requests.post(url=self.url, data=self.params)
         res = r.json()
         result = json.dumps(res, ensure_ascii=False)

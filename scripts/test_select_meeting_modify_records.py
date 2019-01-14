@@ -28,7 +28,7 @@ class TestSelectMeetingModifyRecords(unittest.TestCase):
     def test_select_meeting_modify_records(self):
         u"""会议变更记录查询接口"""
         # 将meetingId写死了(9280)，是一个之前做过编辑操作的预约会议
-        logger.info(params_log + str(self.params))
+        logger.warning(params_log + str(self.params))
         r = requests.post(self.url, self.params)
         res = r.json()
         result = json.dumps(res, ensure_ascii=False)

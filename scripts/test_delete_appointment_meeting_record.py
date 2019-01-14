@@ -30,7 +30,7 @@ class TestDeleteAppointmentMeetingRecord(unittest.TestCase):
         user_token = get_token()
         logger.info('获取token')
         params = dict(user_token, **meeting_id)
-        logger.info(params_log + str(params))
+        logger.warning(params_log + str(params))
         r = requests.post(self.url, params)
         res = r.json()
         result = json.dumps(res, ensure_ascii=False)

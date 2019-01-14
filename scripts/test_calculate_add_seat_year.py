@@ -27,7 +27,7 @@ class TestCalculateAddSeatYear(unittest.TestCase):
     def test_calculate_add_seat_year(self):
         u"""席位扩充时长计算接口"""
         teamId = get_team_id()
-        logger.info(params_log + str(teamId))
+        logger.warning(params_log + str(teamId))
         r = requests.post(url=self.url, data=teamId)
         res = r.json()
         result = json.dumps(res, ensure_ascii=False)

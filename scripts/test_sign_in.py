@@ -28,7 +28,7 @@ class TestSignIn(unittest.TestCase):
     @unittest.skipIf(condition=True, reason='万能验证码')
     def test_sign_in(self):
         u"""用户注册接口"""
-        logger.info(params_log + str(self.params))
+        logger.warning(params_log + str(self.params))
         r = requests.post(self.url, self.params)
         res = r.json()
         result = json.dumps(res, ensure_ascii=False)

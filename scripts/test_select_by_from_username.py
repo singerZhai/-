@@ -1,7 +1,8 @@
 import json
 import unittest
 import requests
-from base.base_action import get_url, get_params, get_res, now_time, start_log, runtime, end_log, res_log, assert_equal
+from base.base_action import get_url, get_params, get_res, now_time, start_log, runtime, end_log, res_log, assert_equal, \
+    params_log
 from base.logger import Log
 
 
@@ -26,6 +27,7 @@ class TestSelectByFromUsername(unittest.TestCase):
 
     def test_select_by_from_username(self):
         u"""群组列表查询接口"""
+        logger.warning(params_log + str(self.params))
         r = requests.post(self.url, data=self.params)
         logger.info('进行接口请求')
         res = r.json()

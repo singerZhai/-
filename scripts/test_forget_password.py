@@ -29,7 +29,7 @@ class TestForgetPassword(unittest.TestCase):
     @unittest.skipIf(condition=True, reason='万能验证码')
     def test_forget_password(self):
         u"""用户忘记密码接口"""
-        logger.info(params_log + str(self.params))
+        logger.warning(params_log + str(self.params))
         r = requests.post(self.url, self.params)
         res = r.json()
         result = json.dumps(res, ensure_ascii=False)

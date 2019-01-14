@@ -2,7 +2,7 @@ import json
 import unittest
 import requests
 from base.base_action import get_url, get_params, get_res, start_log, params_log, res_log, end_log, now_time, runtime, \
-    assert_equal, random_Udid
+    assert_equal, random_device_Udid
 from base.logger import Log
 
 
@@ -25,12 +25,11 @@ class TestSignInDeviceUser(unittest.TestCase):
         logger.warning(run_time)
         logger.warning(end_log)
 
-    # @unittest.skipIf(condition=True, reason='deviceUdid')
     def test_sign_in_device_user(self):
         u"""注册设备用户接口"""
-        Udid = random_Udid()
+        Udid = random_device_Udid()
         new_params = dict(Udid, **self.params)
-        logger.info(params_log + str(new_params))
+        logger.warning(params_log + str(new_params))
         r = requests.post(url=self.url, data=new_params)
         res = r.json()
         result = json.dumps(res, ensure_ascii=False)

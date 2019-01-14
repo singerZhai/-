@@ -2,7 +2,7 @@ import json
 import unittest
 import requests
 from base.base_action import get_url, get_params, get_res, start_log, params_log, res_log, end_log, now_time, runtime, \
-    assert_equal
+    assert_equal, random_device_Udid
 from base.logger import Log
 
 
@@ -25,11 +25,12 @@ class TestTabletUserFastLogin(unittest.TestCase):
         logger.warning(run_time)
         logger.warning(end_log)
 
-    @unittest.skipIf(condition=True, reason='deviceUdid')
     def test_tablet_user_fast_login(self):
         u"""平板用户快速登录接口"""
-        logger.info(params_log + str(self.params))
-        r = requests.post(self.url, self.params)
+        deviceUdid = random_device_Udid()
+        new_params = dict(deviceUdid, **self.params)
+        logger.warning(params_log + str(new_params))
+        r = requests.post(self.url, new_params)
         res = r.json()
         result = json.dumps(res, ensure_ascii=False)
         logger.warning(res_log + result)

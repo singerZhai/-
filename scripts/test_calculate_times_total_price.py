@@ -27,7 +27,7 @@ class TestCalculateTimesTotalPrice(unittest.TestCase):
 
     def test_calculate_times_total_price(self):
         u"""时长总价计算接口"""
-        logger.info(params_log + str(self.params))
+        logger.warning(params_log + str(self.params))
         r = requests.post(url=self.url, data=self.params)
         res = r.json()
         result = json.dumps(res, ensure_ascii=False)

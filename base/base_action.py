@@ -9,7 +9,7 @@ import yaml
 from MySQL import OpenDB
 from base.logger import Log
 
-main_url = 'http://www.dingchengvideo.cn:8080'
+main_url = ''
 path = './data/'
 
 

@@ -15,25 +15,25 @@ path = './data/'
 
 def get_url(file, urls, url_name):
     with open(path + file + '.yml', encoding='utf-8') as f:
-        result = yaml.load(f)
+        result = yaml.load(f, Loader=yaml.FullLoader)
         return main_url + result[urls][url_name]
 
 
 def get_params(file, urls, params):
     with open(path + file + '.yml', encoding='utf-8') as f:
-        result = yaml.load(f)
+        result = yaml.load(f, Loader=yaml.FullLoader)
         return result[urls][params]
 
 
 def get_res(file, urls, res):
     with open(path + file + '.yml', encoding='utf-8') as f:
-        result = yaml.load(f)
+        result = yaml.load(f, Loader=yaml.FullLoader)
         return result[urls][res]
 
 
 def change_back_password_params():
     with open('./data/data.yml', encoding='utf-8') as f:
-        result = yaml.load(f)
+        result = yaml.load(f, Loader=yaml.FullLoader)
         return result['change_password']['change_back_password']['params']
 
 
@@ -467,16 +467,15 @@ def create_times_order_and_return_orderId():
     return orderId_dict
 
 
-
 if __name__ == '__main__':
-    # print(get_url('data', 'login', 'url'))
+    print(get_url('data', 'login', 'url'))
     # print(get_params('data', 'login', 'params'))
     # print(get_res('data', 'login', 'res'))
     # print(get_token())
     # print(change_back_password_params())
     # # 将密码更改回‘123456’
     # # again_change_password()
-    print(sign_in_device_user())
+    # print(sign_in_device_user())
     # print(get_user_id())
     # print(get_meeting_start_time())
     # print(get_meeting_end_time())
